@@ -1,9 +1,9 @@
-# Taxonomy
+# Inscripter
 
 An open source application built using the new router, server components and everything new in Next.js 13.
 
 > **Warning**
-> This app is a work in progress. I'm building this in public. You can follow the progress on Twitter [@shadcn](https://twitter.com/shadcn).
+> This app is a work in progress. I'm building this in public. You can follow the progress on Twitter [@inscripter](https://twitter.com/inscripter).
 > See the roadmap below.
 
 ## About this project
@@ -19,7 +19,7 @@ A few people have asked me to turn this into a starter. I think we could do that
 > **Warning**
 > This app is using the unstable releases for Next.js 13 and React 18. The new router and app dir is still in beta and not production-ready.
 > **Expect some performance hits when testing the dashboard**.
-> If you see something broken, you can ping me [@shadcn](https://twitter.com/shadcn).
+> If you see something broken, you can ping me [@inscripter](https://twitter.com/inscripter).
 
 ## Features
 
@@ -44,7 +44,7 @@ A few people have asked me to turn this into a starter. I think we could do that
 ## Roadmap
 
 - [x] ~Add MDX support for basic pages~
-- [x] ~Build marketing pages~
+- [x] ~Build landing pages~
 - [x] ~Subscriptions using Stripe~
 - [x] ~Responsive styles~
 - [x] ~Add OG image for blog using @vercel/og~
@@ -87,4 +87,4 @@ pnpm dev
 
 ## License
 
-Licensed under the [MIT license](https://github.com/shadcn/taxonomy/blob/main/LICENSE.md).
+Licensed under the [MIT license](https://github.com/inscripter/inscripter/blob/main/LICENSE.md).

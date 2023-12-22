@@ -1,6 +1,6 @@
 import { MarketingConfig } from "types"
 
-export const marketingConfig: MarketingConfig = {
+export const landingConfig: MarketingConfig = {
   mainNav: [
     {
       title: "Features",
