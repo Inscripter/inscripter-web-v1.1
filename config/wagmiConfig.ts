@@ -10,6 +10,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   [publicProvider()]
 );
 
+
 const { connectors } = getDefaultWallets({
   appName: 'inscripter',
   chains,
