@@ -70,14 +70,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
           "min-h-screen bg-background font-protoMono-semibold antialiased",
         )}
       >
-        {/* <Web3Providers> */}
+        <Web3Providers>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
           <Analytics />
           <Toaster />
           <TailwindIndicator />
         </ThemeProvider>
-        {/* </Web3Providers> */}
+        </Web3Providers>
       </body>
     </html>
   )
