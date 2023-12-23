@@ -8,7 +8,7 @@ import { MainNavItem } from "types"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
-import { InstIcons } from "@/components/inst-icons"
+import { SvgImages } from "@/components/svgImages"
 import { MobileNav } from "@/components/mobile-nav"
 
 interface MainNavProps {
@@ -21,9 +21,9 @@ export function MainNav({ items, children }: MainNavProps) {
   const [showMobileMenu, setShowMobileMenu] = React.useState<boolean>(false)
 
   return (
-    <div className="flex gap-6 md:gap-10">
+    <div className="flex gap-6">
       <Link href="/" className="hidden items-center space-x-2 md:flex">
-      <InstIcons.logo/>
+      <SvgImages.logo/>
         <span className="hidden font-bold sm:inline-block">
           {siteConfig.name}
         </span>

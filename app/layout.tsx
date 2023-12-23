@@ -1,6 +1,7 @@
 import localFont from "next/font/local"
 
 import "@/styles/globals.css"
+import '@rainbow-me/rainbowkit/styles.css';
 import { siteConfig } from "@/config/site"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
@@ -69,14 +70,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
           "min-h-screen bg-background font-protoMono-semibold antialiased",
         )}
       >
-        <Web3Providers>
+        {/* <Web3Providers> */}
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
           <Analytics />
           <Toaster />
           <TailwindIndicator />
         </ThemeProvider>
-        </Web3Providers>
+        {/* </Web3Providers> */}
       </body>
     </html>
   )

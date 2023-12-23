@@ -108,7 +108,7 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
-      title: "Marketing Site",
+      title: "Landing Site",
       items: [
         {
           title: "Introduction",
