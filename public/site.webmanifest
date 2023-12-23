@@ -1,6 +1,6 @@
 {
-  "name": "Inscripter",
-  "short_name": "Inscripter",
+  "name": "inscripter",
+  "short_name": "inscripter",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
