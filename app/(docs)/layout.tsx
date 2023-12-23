@@ -21,9 +21,9 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
             <DocsSidebarNav items={docsConfig.sidebarNav} />
           </MainNav>
           <div className="flex flex-1 items-center space-x-4 sm:justify-end">
-            <div className="flex-1 sm:grow-0">
+            {/* <div className="flex-1 sm:grow-0">
               <DocsSearch />
-            </div>
+            </div> */}
             <nav className="flex space-x-4">
               <Link
                 href={siteConfig.links.github}

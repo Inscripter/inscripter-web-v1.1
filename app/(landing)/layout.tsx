@@ -6,8 +6,7 @@ import { landingConfig } from "@/config/landing"
 import { cn } from "@/lib/utils"
 
 import { buttonVariants } from "@/components/ui/button"
-import { WalletConnectBtn } from "@/components/ui/wallet-connect-btn" 
-// import { CutomizedWalletConnectBtn } from "@/components/ui/walletConnectBtn" 
+import { ConnectButton } from "@/components/ui/wallet-connect-btn" 
 import { MainNav } from "@/components/main-nav"
 import { SiteFooter } from "@/components/site-footer"
 
@@ -25,16 +24,9 @@ export default async function LandingLayout({
         <div className="flex h-12 items-center justify-between py-6 ">
           <MainNav items={landingConfig.mainNav} />
           <nav>
-            <WalletConnectBtn/>
-            {/* <Link
-              href="/login"
-              className={cn(
-                buttonVariants({ variant: "secondary", size: "sm" }),
-                "px-4"
-              )}
-            >
-              Login
-            </Link> */}
+            <div className="text-black">
+            <ConnectButton/>
+            </div>
           </nav>
         </div>
       </header>

@@ -1,14 +1,15 @@
 import localFont from "next/font/local"
 
 import "@/styles/globals.css"
-import '@rainbow-me/rainbowkit/styles.css';
+
+import { Web3Modal } from "../context/Web3Modal";
+
 import { siteConfig } from "@/config/site"
 import { absoluteUrl, cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Providers } from './providers';
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -72,12 +73,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
       >
 
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <Providers>
+        <Web3Modal>
           {children}
           <Analytics />
           <Toaster />
           <TailwindIndicator />
-        </Providers>
+        </Web3Modal>
         </ThemeProvider>
 
       </body>

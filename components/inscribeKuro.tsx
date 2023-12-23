@@ -91,7 +91,7 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
           className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
           target="_blank"
         >
-          = FREE GIFT FOR PROMO =
+          = FREE MINT =
         </Link>
         <SvgImages.kuroCat/>
         
