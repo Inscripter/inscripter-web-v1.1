@@ -10,7 +10,7 @@ export function Web3Providers({ children }: { children: React.ReactNode }) {
   React.useEffect(() => setMounted(true), []);
   
   return (
-      // <WagmiConfig config={config}>
+      <WagmiConfig config={config}>
         <RainbowKitProvider
           locale="en-US"
           theme={darkTheme({
@@ -24,6 +24,6 @@ export function Web3Providers({ children }: { children: React.ReactNode }) {
         >
           {mounted && children}
         </RainbowKitProvider>
-      // </WagmiConfig>
+      </WagmiConfig>
   );
 }
