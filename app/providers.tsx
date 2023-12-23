@@ -1,11 +1,11 @@
-'use client';
+"use client";
 import * as React from "react";
 import { RainbowKitProvider, darkTheme } from '@rainbow-me/rainbowkit';
 
 import { WagmiConfig } from 'wagmi';
 import { chains, config } from '../config/wagmiConfig';
 
-export function Web3Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => setMounted(true), []);
   

@@ -1,3 +1,5 @@
+"use client";
+
 import localFont from "next/font/local"
 
 import "@/styles/globals.css"
@@ -8,7 +10,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
-import { Web3Providers } from './web3Providers';
+import { Providers } from './providers';
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -70,14 +72,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
           "min-h-screen bg-background font-protoMono-semibold antialiased",
         )}
       >
-        <Web3Providers>
+
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Providers>
           {children}
           <Analytics />
           <Toaster />
           <TailwindIndicator />
+        </Providers>
         </ThemeProvider>
-        </Web3Providers>
+
       </body>
     </html>
   )

@@ -6456,6 +6456,11 @@
   "resolved" "https://registry.npmjs.org/markdown-table/-/markdown-table-3.0.3.tgz"
   "version" "3.0.3"
 
+"markdown-wasm@^1.2.0", "markdown-wasm@1.x":
+  "integrity" "sha512-S12OTkyXCkOgI1n1rZY9cg4bK/PGu80Emjpvwp8BEjwCxhPV3yddF0U6+QhCitdBsI1tzWcoeahmW7k0Pq81OA=="
+  "resolved" "https://registry.npmjs.org/markdown-wasm/-/markdown-wasm-1.2.0.tgz"
+  "version" "1.2.0"
+
 "mdast-util-definitions@^5.0.0":
   "integrity" "sha512-8SVPMuHqlPME/z3gqVwWY4zVXn8lqKv/pAhC57FuJ40ImXyBpmO5ukh98zB2v7Blql2FiHjHv9LVztSIqjY+MA=="
   "resolved" "https://registry.npmjs.org/mdast-util-definitions/-/mdast-util-definitions-5.1.2.tgz"

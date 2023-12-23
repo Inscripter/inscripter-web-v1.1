@@ -4,18 +4,18 @@ import { ogImageSchema } from "@/lib/validations/og"
 
 export const runtime = "edge"
 
-const interRegular = fetch(
-  new URL("../../../assets/fonts/Inter-Regular.ttf", import.meta.url)
+const protoRegular = fetch(
+  new URL("../../../assets/fonts/ProtoMono-Regular.woff2", import.meta.url)
 ).then((res) => res.arrayBuffer())
 
-const interBold = fetch(
-  new URL("../../../assets/fonts/CalSans-SemiBold.ttf", import.meta.url)
+const protoSemiBold = fetch(
+  new URL("../../../assets/fonts/ProtoMono-SemiBold.woff2", import.meta.url)
 ).then((res) => res.arrayBuffer())
 
 export async function GET(req: Request) {
   try {
-    const fontRegular = await interRegular
-    const fontBold = await interBold
+    const fontRegular = await protoRegular
+    const fontBold = await protoSemiBold
 
     const url = new URL(req.url)
     const values = ogImageSchema.parse(Object.fromEntries(url.searchParams))

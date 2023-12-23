@@ -38,6 +38,3 @@ next-env.d.ts
 
 .vscode
 .contentlayer
-
-#
-/.well-known
