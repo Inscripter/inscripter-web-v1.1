@@ -6,7 +6,7 @@ import { landingConfig } from "@/config/landing"
 import { cn } from "@/lib/utils"
 
 import { buttonVariants } from "@/components/ui/button"
-import { WalletConnectBtn } from "@/components/ui/WalletConnectBtn" 
+import { WalletConnectBtn } from "@/components/ui/wallet-connect-btn" 
 // import { CutomizedWalletConnectBtn } from "@/components/ui/walletConnectBtn" 
 import { MainNav } from "@/components/main-nav"
 import { SiteFooter } from "@/components/site-footer"
