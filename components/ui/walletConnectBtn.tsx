@@ -1,12 +1,12 @@
-'use client';
+'use client'
 
-export { ConnectButton } from '@rainbow-me/rainbowkit'
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
-// import { ConnectButton } from '@rainbow-me/rainbowkit';
+// export { ConnectButton } from '@rainbow-me/rainbowkit'
 
-// export const WalletConnectBtn = () => {
-//   return <ConnectButton />;
-// };
+export const WalletConnectBtn = () => {
+  return <ConnectButton />;
+};
 
 // export function CutomizedWalletConnectBtn () {
 //   return (
