@@ -1,5 +1,3 @@
-"use client";
-
 import localFont from "next/font/local"
 
 import "@/styles/globals.css"
@@ -23,11 +21,11 @@ export const metadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "Next.js",
-    "React",
-    "Tailwind CSS",
-    "Server Components",
-    "Radix UI",
+    "Inscription",
+    "Etherscan",
+    "Kroma Network",
+    "Klaytn",
+    "Wemix",
   ],
   authors: [
     {
