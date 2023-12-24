@@ -27,10 +27,12 @@ import {
   type Icon as LucideIcon,
 } from "lucide-react"
 
+import { SvgImages } from "@/components/svgImages"
+
 export type Icon = LucideIcon
 
 export const Icons = {
-  logo: Command,
+  logo: SvgImages.logo,
   openMenu: AlignJustify,
   close: X,
   spinner: Loader2,
