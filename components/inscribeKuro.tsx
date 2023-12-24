@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { env } from "@/env.mjs"
 
-import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import React, { ChangeEvent, use, useCallback, useEffect, useState } from 'react';
 import {
   useSendTransaction,
   useWaitForTransaction,
@@ -24,6 +24,10 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
   const account = useAccount();
 
   const [mintAmount, setMintAmount] = useState('1000');
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => { setIsMobile(window.innerWidth <= 640) });
+
   const [isInvalidInput, setIsInvalidInput] = useState(false);
   const [scribeMessage, setScribeMessage] = useState('');
   const [isScribing, setIsScribing] = useState(false);
@@ -102,10 +106,16 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
         <p className="text-center max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
           Get First Inscription Token on <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>Kroma</a>
         </p>
+
+
         <Progress value={progressRatio}/>
-        <p className="w-full text-right sm:text-sm lg:text-sm">
-          <span style={{ color: '#45d620' }}>{totalMinted}</span> of {totalSupply} kro has been minted.
+        <p className="w-full text-right sm:text-sm lg:text-sm"> 
+        {totalMinted} of <span style={{ color: '#45d620' }}>{isMobile ? '2.1M' : totalSupply}</span> kro has been minted.
         </p>
+
+
+
+
         <div className="space-x-4">
             <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
               Get Started
