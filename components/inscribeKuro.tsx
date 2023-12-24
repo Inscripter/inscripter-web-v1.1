@@ -87,15 +87,14 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
   return (
     <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
       <div className="container flex flex-col items-center gap-4 w-full">
-        <Link
-          href={siteConfig.links.twitter}
-          className="rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium"
-          target="_blank"
+        <div
+          className="rounded-2xl bg-muted mt-20 px-4 py-1.5 text-sm font-medium"
         >
           = FREE MINT =
-        </Link>
-        <SvgImages.kuroCat/>
-        
+        </div>
+
+          <SvgImages.kuroCat/>
+
         {/* Removed comment for brevity */}
         <h1 className="text-scale-down text-center font-proto-mono text-2xl sm:text-4xl md:text-5xl lg:text-6xl">
           INSCRIBE TO MINT <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>$KRO</a>
@@ -112,17 +111,13 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
         </p>
 
         <div className="space-x-4">
-            <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
-              Get Started
-            </Link>
-            <Link
-              href={siteConfig.links.github}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
-            >
-              GitHub
-            </Link>
+        <button
+          className={isInvalidInput ? "scribe-button-disabled" : "scribe-button"}
+          type="button"
+          onClick={onScribe}
+        >
+          MINT
+        </button>
           </div>
       </div>
     </section>
