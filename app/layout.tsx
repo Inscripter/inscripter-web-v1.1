@@ -64,11 +64,11 @@ export const metadata = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="mobile-scale-down">
       <head />
       <body className="min-h-screen bg-background font-protoMono-semibold antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="mobile-scale-down">
+          <div>
             <Web3Modal>
               {children}
               <Analytics />
