@@ -109,7 +109,7 @@
 }
 
 @media (max-width: 768px) {
-  .text-scale-down {
+  .mobile-scale-down {
     transform: scale(0.8);
     transform-origin: top center;
   }
