@@ -100,14 +100,15 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
         <h1 className="text-scale-down text-center font-proto-mono text-2xl sm:text-4xl md:text-5xl lg:text-6xl">
           INSCRIBE TO MINT <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>$KRO</a>
         </h1>
-        <p className=" text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-          Get First Inscription Token on <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>Kroma</a>
+        <p className=" text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground sm:text-2xl sm:leading-8">
+          First Inscription Token on <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>Kroma</a>
         </p>
 
 
         <Progress value={progressRatio}/>
-        <p className="w-full text-right sm:text-sm lg:text-sm"> 
-        {totalMinted} of <span style={{ color: '#45d620' }}>{isMobile ? '2.1M' : totalSupply}</span> kro has been minted.
+        <p className="w-full text-right sm:text-sm lg:text-sm">
+          <span style={{ color: '#45d620' }}>{totalMinted}</span> of 
+          <span>{isMobile ? ' 21M' : ' '+totalSupply+'KRO has been minted.'}</span> 
         </p>
 
         <div className="space-x-4">
