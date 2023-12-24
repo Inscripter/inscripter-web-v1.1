@@ -31,7 +31,7 @@ export const metadata = {
   authors: [
     {
       name: "inscripter",
-      url: "https://inscripter.com",
+      url: "https://inscripter.io",
     },
   ],
   creator: "inscripter",

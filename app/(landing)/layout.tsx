@@ -20,7 +20,7 @@ export default async function LandingLayout({
   return (
     <div className="flex min-h-screen flex-col">
       <header className="container z-40 bg-background fixed bg-gradient-to-b from-black to-transparent opacity-90 overflow-x-scroll scrollbar-hide">
-        <div className="flex h-12 items-center justify-between py-6 ">
+        <div className="flex sm:h-20 lg:h-12 items-center justify-between py-6 ">
           <MainNav items={landingConfig.mainNav} />
           <nav>
             <div className="text-black">

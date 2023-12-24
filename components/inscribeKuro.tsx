@@ -84,9 +84,6 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
     console.log('Transaction hash:', data.hash);
   }, [data, chainId]);
 
-
-
-
   return (
     <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
       <div className="container flex flex-col items-center gap-4 w-full">
@@ -112,10 +109,7 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
         <p className="w-full text-right sm:text-sm lg:text-sm"> 
         {totalMinted} of <span style={{ color: '#45d620' }}>{isMobile ? '2.1M' : totalSupply}</span> kro has been minted.
         </p>
-
-
-
-
+        
         <div className="space-x-4">
             <Link href="/login" className={cn(buttonVariants({ size: "lg" }))}>
               Get Started

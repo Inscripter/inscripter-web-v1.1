@@ -1,5 +1,6 @@
 import {
   AlertTriangle,
+  AlignJustify,
   ArrowRight,
   Check,
   ChevronLeft,
@@ -30,6 +31,7 @@ export type Icon = LucideIcon
 
 export const Icons = {
   logo: Command,
+  openMenu: AlignJustify,
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,
