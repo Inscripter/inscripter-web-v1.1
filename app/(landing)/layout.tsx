@@ -18,7 +18,6 @@ export default async function LandingLayout({
   children,
 }: LandingLayoutProps) {
   return (
-    
     <div className="flex min-h-screen flex-col">
       <header className="container z-40 bg-background fixed bg-gradient-to-b from-black to-transparent opacity-90 overflow-x-scroll scrollbar-hide">
         <div className="flex h-12 items-center justify-between py-6 ">

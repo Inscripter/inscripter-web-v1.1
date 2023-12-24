@@ -46,15 +46,15 @@ export default async function IndexPage() {
     <>
       <InscribeKuro progressRatio={progressRatio} totalSupply={totalSupply} totalMinted={totalMinted}/>
       <section
-        id="features"
+        id="inscriptions"
         className="container space-y-6 bg-slate-50 py-8 dark:bg-transparent md:py-12 lg:py-24"
       >
         <div className="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center">
           <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            Features
+            Inscriptions
           </h2>
           <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            This project is an experiment to see how a modern app, with features
+            This project is an experiment to see how a modern app, with inscriptions
             like auth, subscriptions, API routes, and static pages would work in
             Next.js 13 app dir.
           </p>

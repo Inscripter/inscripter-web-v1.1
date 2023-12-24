@@ -66,21 +66,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body
-        className={cn(
-          "min-h-screen bg-background font-protoMono-semibold antialiased",
-        )}
-      >
-
+      <body className="min-h-screen bg-background font-protoMono-semibold antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-        <Web3Modal>
-          {children}
-          <Analytics />
-          <Toaster />
-          <TailwindIndicator />
-        </Web3Modal>
+          <div className="mobile-scale-down">
+            <Web3Modal>
+              {children}
+              <Analytics />
+              <Toaster />
+              <TailwindIndicator />
+            </Web3Modal>
+          </div>
         </ThemeProvider>
-
       </body>
     </html>
   )

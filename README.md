@@ -8,11 +8,11 @@ An open source application built using the new router, server components and eve
 
 ## About this project
 
-This project as an experiment to see how a modern app (with features like authentication, subscriptions, API routes, static pages for docs ...etc) would work in Next.js 13 and server components.
+This project as an experiment to see how a modern app (with inscriptions like authentication, subscriptions, API routes, static pages for docs ...etc) would work in Next.js 13 and server components.
 
 **This is not a starter template.**
 
-A few people have asked me to turn this into a starter. I think we could do that once the new features are out of beta.
+A few people have asked me to turn this into a starter. I think we could do that once the new inscriptions are out of beta.
 
 ## Note on Performance
 
@@ -21,7 +21,7 @@ A few people have asked me to turn this into a starter. I think we could do that
 > **Expect some performance hits when testing the dashboard**.
 > If you see something broken, you can ping me [@inscripter](https://twitter.com/inscripter).
 
-## Features
+## Inscriptions
 
 - New `/app` dir,
 - Routing, Layouts, Nested Layouts and Layout Groups
