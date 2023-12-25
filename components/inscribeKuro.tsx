@@ -3,6 +3,10 @@
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Card } from "@/components/ui/card"
+import { CardSkeleton } from "@/components/card-skeleton"
+import { Callout } from "./callout";
 import { env } from "@/env.mjs"
 
 import React, { ChangeEvent, use, useCallback, useEffect, useState } from 'react';
@@ -99,9 +103,10 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
         <h1 className="text-scale-down text-center font-proto-mono text-2xl sm:text-4xl md:text-5xl lg:text-6xl">
           INSCRIBE TO MINT <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>$KRO</a>
         </h1>
-        <p className=" text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground sm:text-2xl sm:leading-8">
-          First Inscription Token on <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>Kroma</a>
+        <p className="text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground text-2xl sm:leading-8">
+          GET First Inscription Token on <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>Kroma</a>
         </p>
+        
 
 
         <Progress value={progressRatio}/>
@@ -110,15 +115,32 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
           <span>{isMobile ? ' 21M' : ' '+totalSupply+'KRO has been minted.'}</span> 
         </p>
 
-        <div className="space-x-4">
-        <button
-          className={isInvalidInput ? "scribe-button-disabled" : "scribe-button"}
-          type="button"
-          onClick={onScribe}
-        >
-          MINT
-        </button>
+        <div className="w-full">
+          <Input
+            value={fixedScribeInput}
+            readOnly
+            style={{height: "20%"}}
+          />
+        
+        
+        <div className="box-label mt-3">Mint Amount ( Maximum: 1000 )</div>
+
+      <input
+        className={isInvalidInput ? "mint-invalid-input" : "mint-amount-input"}
+        type="number"
+        value={mintAmount}
+        onChange={handleMintAmountChange}
+        min="1"
+        max="1000" // Set the max value to 9999 for 4 digits
+        style={{ wordWrap: "break-word" }}
+      />
+
           </div>
+          <button className={cn(buttonVariants({ size: "lg" }))}
+                  type="button"
+                  onClick={onScribe}>
+                  MINT
+          </button>
       </div>
     </section>
   );

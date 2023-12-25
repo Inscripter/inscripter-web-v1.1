@@ -32,6 +32,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".contentlayer/generated"
-  ],
+, "components/inscribeKuro.mdx"  ],
   "exclude": ["node_modules"]
 }
