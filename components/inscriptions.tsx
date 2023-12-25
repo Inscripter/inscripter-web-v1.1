@@ -37,4 +37,4 @@ const Insriptions = ({ progressRatio, totalMinted, totalSupply }) => {
     );
 };
 
-export { InscribeKuro };
+export { Insriptions };
