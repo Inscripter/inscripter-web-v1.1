@@ -23,7 +23,7 @@ export default function LandingLayout({
         <div className="flex sm:h-20 lg:h-12 items-center justify-between py-6 ">
           <MainNav items={landingConfig.mainNav} />
           <nav>
-            <div className="scale-[0.90]">
+            <div className="scale-[0.80]">
             <ConnectButton/>
             </div>
           </nav>
