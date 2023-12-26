@@ -4,7 +4,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Card } from "@/components/ui/card"
+import { Box, Section, Container, Text, ScrollArea, Button} from "@radix-ui/themes"
 import { CardSkeleton } from "@/components/card-skeleton"
 import { Callout } from "./callout";
 import { env } from "@/env.mjs"
@@ -17,9 +17,9 @@ import {
   useChainId,
 } from 'wagmi';
 
-import { SvgImages } from "@/components/svgImages" // Update with correct path
-import { Progress } from "@/components/ui/progress" // Update with correct path
-import { siteConfig } from "@/config/site" // Update with the correct path if needed
+import { SvgImages } from "@/components/svgImages"
+import { Progress } from "@/components/ui/progress"
+import { siteConfig } from "@/config/site"
 
 const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
   const { data, error, isLoading, isError, sendTransaction } = useSendTransaction();
@@ -89,60 +89,81 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
   }, [data, chainId]);
 
   return (
-    <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
+    <Box className="space-y-6 pb-8 pt-8 md:pb-12 sm:pt-4 lg:py-4">
+      <Section>
       <div className="container flex flex-col items-center gap-4 w-full">
-        <div
-          className="rounded-2xl bg-muted mt-20 px-4 py-1.5 text-sm font-medium"
-        >
-          = FREE MINT =
+        <div className="rounded-2xl bg-muted mt-20 flex px-4 py-1.5 text-lg font-medium">
+            FREE MINT <div style={{ color: '#45D620' }}>&nbsp;$KRO</div>
         </div>
 
           <SvgImages.kuroCat/>
 
         {/* Removed comment for brevity */}
-        <h1 className="text-scale-down text-center font-proto-mono text-2xl sm:text-4xl md:text-5xl lg:text-6xl">
-          INSCRIBE TO MINT <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>$KRO</a>
-        </h1>
-        <p className="text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground text-2xl sm:leading-8">
-          GET First Inscription Token on <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>Kroma</a>
-        </p>
-        
-
-
+        <h1 className="text-scale-down text-center font-proto-mono text-2xl sm:text-4xl md:text-5xl lg:text-6xl">GET First Inscription Token</h1>
+        <p className="text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground text-2xl sm:leading-8">on <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>Kroma Network</a></p>
         <Progress value={progressRatio}/>
         <p className="w-full text-right sm:text-sm lg:text-sm">
           <span style={{ color: '#45d620' }}>{totalMinted}</span> of 
-          <span>{isMobile ? ' 21M' : ' '+totalSupply+'KRO has been minted.'}</span> 
+          <span>{isMobile ? ' 21M MINTED' : ' '+totalSupply+' KRO minted.'}</span> 
         </p>
-
-        <div className="w-full">
-          <Input
-            value={fixedScribeInput}
-            readOnly
-            style={{height: "20%"}}
-          />
+        </div>
+      <div>
+      <Container className="container flex flex-col items-center gap-4 w-1/2" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div className="mt-6">
+        <Text as="label" size="6" >Input Data For Mint</Text>
+        </div> 
+        <Input 
+          value={fixedScribeInput} 
+          readOnly 
+          style={{
+            height: "45px",
+            textAlign:"center",
+            borderColor:"white",
+            wordWrap: "break-word"}}/>
         
-        
-        <div className="box-label mt-3">Mint Amount ( Maximum: 1000 )</div>
+        <div className="mt-6">
+        <Text as="label" size="6">Mint Amount ( Max: 1000 )</Text>
+        </div>
+        <Input
+          type="number"
+          value={mintAmount}
+          onChange={handleMintAmountChange}
+          min="1"
+          max="1000" // Set the max value to 9999 for 4 digits
+          style={{
+            height: "45px",
+            textAlign:"center",
+            color: isInvalidInput ? 'red' : 'white',
+            borderColor: isInvalidInput ? 'red' : 'white',
+            // backgroundColor: isInvalidInput ? '#ffe6e6' : 'transparent',
+            wordWrap: "break-word"
+          }}
+        />
 
-      <input
-        className={isInvalidInput ? "mint-invalid-input" : "mint-amount-input"}
-        type="number"
-        value={mintAmount}
-        onChange={handleMintAmountChange}
-        min="1"
-        max="1000" // Set the max value to 9999 for 4 digits
-        style={{ wordWrap: "break-word" }}
-      />
-
-          </div>
-          <button className={cn(buttonVariants({ size: "lg" }))}
-                  type="button"
-                  onClick={onScribe}>
-                  MINT
-          </button>
+      <div className="flex flex-col items-center gap-4">
+      <Button
+        type="button"
+        size="4"
+        onClick={onScribe}
+        style={{
+          marginTop: '24px',
+          opacity: isInvalidInput ? 0.5 : 1,
+          pointerEvents: isInvalidInput ? 'none' : 'auto',
+          backgroundColor: isInvalidInput ? '#ccc' : 'white',
+          color: isInvalidInput ? '#666' : 'black',
+          border: isInvalidInput ? 'none' : '1px solid var(--color-input)',
+          cursor: isInvalidInput ? 'not-allowed' : 'pointer',
+          ...(isInvalidInput ? {} : { ':hover': { backgroundColor: 'var(--color-primary/90)' } }),
+        }}
+      >
+        MINT
+      </Button>
       </div>
-    </section>
+
+      </Container>
+      </div>
+      </Section>
+    </Box>
   );
 };
 

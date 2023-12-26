@@ -1,7 +1,4 @@
 import localFont from "next/font/local"
-
-import "@/styles/globals.css"
-
 import { Web3Modal } from "../context/Web3Modal";
 
 import { siteConfig } from "@/config/site"

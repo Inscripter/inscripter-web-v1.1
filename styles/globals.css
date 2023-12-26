@@ -114,3 +114,8 @@
     transform-origin: top center;
   }
 }
+
+.radix-themes {
+  --default-font-family: var(--font-ProtoMono-SemiBold);
+  --heading-font-family: var(--font-ProtoMono-Light);
+}

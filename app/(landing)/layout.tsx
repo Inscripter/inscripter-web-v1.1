@@ -14,7 +14,7 @@ interface LandingLayoutProps {
   children: React.ReactNode
 }
 
-export default async function LandingLayout({
+export default function LandingLayout({
   children,
 }: LandingLayoutProps) {
   return (
