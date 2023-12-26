@@ -1,13 +1,8 @@
 'use client';
 
-import Link from "next/link"
-import { cn } from "@/lib/utils"
-import { buttonVariants } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Box, Section, Container, Text, ScrollArea, Button, Flex, Dialog, TextField} from "@radix-ui/themes"
-import { CardSkeleton } from "@/components/card-skeleton"
-import { Callout } from "./callout";
 import { env } from "@/env.mjs"
+import { siteConfig } from "@/config/site"
+import { is } from "date-fns/locale";
 
 import React, { ChangeEvent, use, useCallback, useEffect, useState } from 'react';
 import {
@@ -17,9 +12,9 @@ import {
   useChainId,
 } from 'wagmi';
 
+import { Box, Section, Container, Text, ScrollArea, Button, Flex, Dialog, TextField} from "@radix-ui/themes"
 import { SvgImages } from "@/components/svgImages"
 import { Progress } from "@/components/ui/progress"
-import { siteConfig } from "@/config/site"
 
 const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
   const { data, error, isLoading, isError, sendTransaction } = useSendTransaction();
@@ -27,7 +22,6 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
   const chainId = useChainId();
   const account = useAccount();
 
-  const [mintAmount, setMintAmount] = useState('1000');
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => { setIsMobile(window.innerWidth <= 640) });
@@ -39,7 +33,7 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
   const handleMintAmountChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     if (newValue.length <= 4) {
-      setMintAmount(newValue);
+      setMintAmount(parseInt(newValue, 10)); // Use parseFloat instead if you want to allow decimal numbers
     }
 
     const value = Number(newValue);
@@ -48,14 +42,19 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
 
   }, []);
 
+  const [mintAmount, setMintAmount] = useState(0);
+  const [fixedScribeInput, setFixedScribeInput] = useState(`data:,{"p":"krc-20","op":"mint","tick":"kro","amt":"${mintAmount}"}`);
+
   useEffect(() => {
     const value = Number(mintAmount);
-    const isInvalid = isNaN(value) || value > 1000 || value === 0 || mintAmount.startsWith('0') || mintAmount.includes('.');
+    const mintAmountStr = mintAmount.toString();
+    const isInvalid = isNaN(value) || value > 1000 || value === 0 || mintAmountStr.startsWith('0') || mintAmountStr.includes('.');
     setIsInvalidInput(isInvalid);
-
   }, [mintAmount]);
 
-  const fixedScribeInput = `data:,{"p":"krc-20","op":"mint","tick":"kro","amt":"${mintAmount}"}`;
+  useEffect(() => {
+    setFixedScribeInput(`data:,{"p":"krc-20","op":"mint","tick":"kro","amt":"${mintAmount}"}`);
+  }, [mintAmount]);
 
   const onScribe = useCallback(async () => {
     if (!account || !account.isConnected || !account.address) {
@@ -80,7 +79,7 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
     } finally {
       setIsScribing(false);
     }
-  }, [account, mintAmount, sendTransaction, fixedScribeInput]);
+  }, [account, mintAmount, sendTransaction]);
 
   useEffect(() => {
     if (!data?.hash) return;
@@ -92,15 +91,15 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
     <Box className="space-y-6 pb-8 pt-8 md:pb-12 sm:pt-4 lg:py-4">
       <Section>
       <div className="container flex flex-col items-center gap-4 w-full">
-        <div className="rounded-2xl bg-muted mt-20 flex px-4 py-1.5 text-lg font-medium">
+        <div className="rounded-2xl bg-muted mt-24 flex px-4 py-1.5 text-lg font-medium">
             FREE MINT <div style={{ color: '#45D620' }}>&nbsp;$KRO</div>
         </div>
 
           <SvgImages.kuroCat/>
 
         {/* Removed comment for brevity */}
-        <h1 className="text-scale-down text-center font-proto-mono text-2xl sm:text-4xl md:text-5xl lg:text-6xl">GET First Inscription Token</h1>
-        <p className="text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground text-2xl sm:leading-8">on <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>Kroma Network</a></p>
+        <h1 className="text-scale-down text-center font-proto-mono text-xl lg:text-6xl">GET FIRST INSCRIPTION</h1>
+        <p className="text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground text-2xl sm:leading-8">on <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>Kroma</a></p>
         <Progress value={progressRatio}/>
         <p className="w-full text-right sm:text-sm lg:text-sm">
           <span style={{ color: '#45d620' }}>{totalMinted}</span> of 
@@ -108,54 +107,19 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
         </p>
         </div>
       <div>
-      <Container className="container flex flex-col items-center gap-4 w-1/2" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-        <div className="mt-6">
-        <Text as="label" size="6" >Input Data For Mint</Text>
-        </div> 
-        <Input 
-          value={fixedScribeInput} 
-          readOnly 
-          style={{
-            height: "45px",
-            textAlign:"center",
-            borderColor:"white",
-            wordWrap: "break-word"}}/>
-        
-        <div className="mt-6">
-        <Text as="label" size="6">Mint Amount ( Max: 1000 )</Text>
-        </div>
-        <Input
-          type="number"
-          value={mintAmount}
-          onChange={handleMintAmountChange}
-          min="1"
-          max="1000" // Set the max value to 9999 for 4 digits
-          style={{
-            height: "45px",
-            textAlign:"center",
-            color: isInvalidInput ? 'red' : 'white',
-            borderColor: isInvalidInput ? 'red' : 'white',
-            // backgroundColor: isInvalidInput ? '#ffe6e6' : 'transparent',
-            wordWrap: "break-word"
-          }}
-        />
-
+      <Container className="container flex flex-col items-center gap-4 w-full" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
       <div className="flex flex-col items-center gap-4">
       <Dialog.Root>
         <Dialog.Trigger>
             <Button
                   type="button"
                   size="4"
-                  onClick={onScribe}
                   style={{
                     marginTop: '24px',
-                    opacity: isInvalidInput ? 0.5 : 1,
-                    pointerEvents: isInvalidInput ? 'none' : 'auto',
-                    backgroundColor: isInvalidInput ? '#ccc' : 'white',
-                    color: isInvalidInput ? '#666' : 'black',
-                    border: isInvalidInput ? 'none' : '1px solid var(--color-input)',
-                    cursor: isInvalidInput ? 'not-allowed' : 'pointer',
-                    ...(isInvalidInput ? {} : { ':hover': { backgroundColor: 'var(--color-primary/90)' } }),
+                    backgroundColor: 'white',
+                    color: 'black',
+                    border: '1px solid var(--color-input)',
+                    cursor: 'pointer',
                   }}
                 >
               MINT
@@ -163,40 +127,66 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
         </Dialog.Trigger>
 
         <Dialog.Content style={{ maxWidth: 450 }}>
-          <Dialog.Title>Edit profile</Dialog.Title>
-          <Dialog.Description size="2" mb="4">
-            Make changes to your profile.
+          <Dialog.Title
+            style={{textAlign:"center"}}>MINT $KRO</Dialog.Title>
+          <Dialog.Description size="2" mb="4"
+            style={{textAlign:"center"}}>
+            GET FIRST INSCRIPTION ON KROMA
           </Dialog.Description>
 
           <Flex direction="column" gap="3">
             <label>
               <Text as="div" size="2" mb="1" weight="bold">
-                Name
+                INPUT DATA
               </Text>
               <TextField.Input
-                defaultValue="Freja Johnsen"
-                placeholder="Enter your full name"
+                value={fixedScribeInput}
+                readOnly
+                style={{textAlign:"center"}}
               />
             </label>
             <label>
               <Text as="div" size="2" mb="1" weight="bold">
-                Email
+                MINT AMOUT ( Max: 1000 )
               </Text>
               <TextField.Input
-                defaultValue="freja@example.com"
-                placeholder="Enter your email"
+                type="number"
+                value={mintAmount}
+                onChange={handleMintAmountChange}
+                min="1"
+                max="1000" // Set the max value to 9999 for 4 digits
+                style={{
+                  height: "45px",
+                  textAlign:"center",
+                  color: isInvalidInput ? 'red' : 'white',
+                  borderColor: isInvalidInput ? 'red' : '#7F8DA3',
+                  // backgroundColor: isInvalidInput ? '#ffe6e6' : 'transparent',
+                  wordWrap: "break-word"
+                }}
               />
             </label>
           </Flex>
 
           <Flex gap="3" mt="4" justify="end">
             <Dialog.Close>
-              <Button variant="soft" color="gray">
-                Cancel
-              </Button>
+              <Button variant="soft" color="gray"
+                type="button"
+                size="4"
+              >CANCEL</Button>
             </Dialog.Close>
             <Dialog.Close>
-              <Button>Save</Button>
+              <Button onClick={onScribe}
+                type="button"
+                size="4"
+                style={{
+                  opacity: isInvalidInput ? 0.5 : 1,
+                  pointerEvents: isInvalidInput ? 'none' : 'auto',
+                  backgroundColor: isInvalidInput ? '#ccc' : 'white',
+                  color: isInvalidInput ? '#666' : 'black',
+                  border: isInvalidInput ? 'none' : '1px solid var(--color-input)',
+                  cursor: isInvalidInput ? 'not-allowed' : 'pointer',
+                  ...(isInvalidInput ? {} : { ':hover': { backgroundColor: 'var(--color-primary/90)' } }) }}
+              >MINT</Button>
             </Dialog.Close>
           </Flex>
         </Dialog.Content>

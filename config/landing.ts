@@ -14,9 +14,9 @@ export const landingConfig: LandingConfig = {
     //   title: "Blog",
     //   href: "/blog",
     // },
-    {
-      title: "Documentation",
-      href: "/docs",
-    },
+    // {
+    //   title: "Documentation",
+    //   href: "/docs",
+    // },
   ],
 }
