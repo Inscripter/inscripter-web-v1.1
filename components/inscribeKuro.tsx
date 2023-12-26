@@ -4,7 +4,7 @@ import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Box, Section, Container, Text, ScrollArea, Button} from "@radix-ui/themes"
+import { Box, Section, Container, Text, ScrollArea, Button, Flex, Dialog, TextField} from "@radix-ui/themes"
 import { CardSkeleton } from "@/components/card-skeleton"
 import { Callout } from "./callout";
 import { env } from "@/env.mjs"
@@ -141,23 +141,67 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
         />
 
       <div className="flex flex-col items-center gap-4">
-      <Button
-        type="button"
-        size="4"
-        onClick={onScribe}
-        style={{
-          marginTop: '24px',
-          opacity: isInvalidInput ? 0.5 : 1,
-          pointerEvents: isInvalidInput ? 'none' : 'auto',
-          backgroundColor: isInvalidInput ? '#ccc' : 'white',
-          color: isInvalidInput ? '#666' : 'black',
-          border: isInvalidInput ? 'none' : '1px solid var(--color-input)',
-          cursor: isInvalidInput ? 'not-allowed' : 'pointer',
-          ...(isInvalidInput ? {} : { ':hover': { backgroundColor: 'var(--color-primary/90)' } }),
-        }}
-      >
-        MINT
-      </Button>
+      <Dialog.Root>
+        <Dialog.Trigger>
+            <Button
+                  type="button"
+                  size="4"
+                  onClick={onScribe}
+                  style={{
+                    marginTop: '24px',
+                    opacity: isInvalidInput ? 0.5 : 1,
+                    pointerEvents: isInvalidInput ? 'none' : 'auto',
+                    backgroundColor: isInvalidInput ? '#ccc' : 'white',
+                    color: isInvalidInput ? '#666' : 'black',
+                    border: isInvalidInput ? 'none' : '1px solid var(--color-input)',
+                    cursor: isInvalidInput ? 'not-allowed' : 'pointer',
+                    ...(isInvalidInput ? {} : { ':hover': { backgroundColor: 'var(--color-primary/90)' } }),
+                  }}
+                >
+              MINT
+            </Button>
+        </Dialog.Trigger>
+
+        <Dialog.Content style={{ maxWidth: 450 }}>
+          <Dialog.Title>Edit profile</Dialog.Title>
+          <Dialog.Description size="2" mb="4">
+            Make changes to your profile.
+          </Dialog.Description>
+
+          <Flex direction="column" gap="3">
+            <label>
+              <Text as="div" size="2" mb="1" weight="bold">
+                Name
+              </Text>
+              <TextField.Input
+                defaultValue="Freja Johnsen"
+                placeholder="Enter your full name"
+              />
+            </label>
+            <label>
+              <Text as="div" size="2" mb="1" weight="bold">
+                Email
+              </Text>
+              <TextField.Input
+                defaultValue="freja@example.com"
+                placeholder="Enter your email"
+              />
+            </label>
+          </Flex>
+
+          <Flex gap="3" mt="4" justify="end">
+            <Dialog.Close>
+              <Button variant="soft" color="gray">
+                Cancel
+              </Button>
+            </Dialog.Close>
+            <Dialog.Close>
+              <Button>Save</Button>
+            </Dialog.Close>
+          </Flex>
+        </Dialog.Content>
+      </Dialog.Root>
+
       </div>
 
       </Container>
