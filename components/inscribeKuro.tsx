@@ -58,7 +58,7 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
 
   const onScribe = useCallback(async () => {
     if (!account || !account.isConnected || !account.address) {
-      alert('You must connect your wallet to scribe.');
+      alert('You must connect your wallet to mint.');
       return;
     }
 
@@ -103,7 +103,7 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
         <Progress value={progressRatio}/>
         <p className="w-full text-right sm:text-sm lg:text-sm">
           <span style={{ color: '#45d620' }}>{totalMinted}</span> of 
-          <span>{isMobile ? ' 21M MINTED' : ' '+totalSupply+' KRO minted.'}</span> 
+          <span>{isMobile ? ' 21B MINTED' : ' '+totalSupply+' KRO minted.'}</span> 
         </p>
         </div>
       <div>
@@ -141,8 +141,9 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
               </Text>
               <TextField.Input
                 value={fixedScribeInput}
+                
                 readOnly
-                style={{textAlign:"center"}}
+                style={{textAlign:"center", height: "45px",}}
               />
             </label>
             <label>

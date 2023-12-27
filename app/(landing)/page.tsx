@@ -9,6 +9,8 @@ import { SvgImages } from "@/components/svgImages"
 import { Underline } from "lucide-react"
 import { InscribeKuro } from "@/components/inscribeKuro"
 
+
+
 async function getGitHubStars(): Promise<string | null> {
   try {
     const response = await fetch(
