@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { landingConfig } from "@/config/landing"
-import { useAccount } from 'wagmi'; // Add this line
+import { useAccount } from 'wagmi';
 
 import { buttonVariants } from "@/components/ui/button"
 import { ConnectButton } from "@/components/ui/wallet-connect-btn" 
@@ -18,11 +18,17 @@ export default function LandingLayout({
   children,
 }: LandingLayoutProps) {
   const [isMobile, setIsMobile] = useState(false);
-  const account = useAccount(); // Add this line
+  const [hasMounted, setHasMounted] = useState(false);
+  const account = useAccount();
 
   useEffect(() => { 
     setIsMobile(window.innerWidth <= 640);
-  });
+    setHasMounted(true);
+  }, []);
+
+  if (!hasMounted) {
+    return null;
+  }
 
   return (
     <div className="flex w-full min-h-screen flex-col">
@@ -36,10 +42,11 @@ export default function LandingLayout({
                   "scale-[1] fixed right-0 flex-col sm:h-20 lg:h-12 items-end justify-end py-2"}>
         <ConnectButton/>
         {isMobile? "" : <div className="w-3"></div>}
+        <div className="flex justify-end mr-4">
+       {!account.isConnected && <div>YOUR BALANCE: - KRO</div>}
       </div>
-      <div className="flex justify-end mr-4">
-      {account.isConnected && <div>YOUR BALANCE: 100 KRO</div>} {/* Modify this line */}
       </div>
+
       <main className="flex-1">{children}</main>
       <SiteFooter />
     </div>

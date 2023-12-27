@@ -27,7 +27,7 @@ export const metadata = {
   ],
   authors: [
     {
-      name: "inscripter",
+      name: "inscripter - Inscription Explorer",
       url: "https://inscripter.io",
     },
   ],
