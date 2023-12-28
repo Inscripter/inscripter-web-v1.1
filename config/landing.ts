@@ -3,8 +3,8 @@ import { LandingConfig } from "types"
 export const landingConfig: LandingConfig = {
   mainNav: [
     {
-      title: "Krodinals",
-      href: "/#krodinals",
+      title: "Insactions",
+      href: "/#insactions",
     },
     // {
     //   title: "Pricing",

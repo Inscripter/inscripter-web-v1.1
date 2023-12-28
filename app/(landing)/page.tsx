@@ -8,7 +8,7 @@ import { Progress } from "@/components/ui/progress"
 import { SvgImages } from "@/components/svgImages"
 import { Underline } from "lucide-react"
 import { InscribeKuro } from "@/components/inscribeKuro"
-
+import { Insactions } from "@/components/insactions"
 
 
 async function getGitHubStars(): Promise<string | null> {
@@ -48,15 +48,9 @@ export default async function IndexPage() {
     <><section id="landing">
       <InscribeKuro progressRatio={progressRatio} totalSupply={totalSupply} totalMinted={totalMinted}/>
       </section>
-      <section id="krodinals" className="container py-8 md:py-12 lg:py-24 h-full">
+      <section id="insactions" className="container py-8 md:py-12 lg:py-24 h-full">
         <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-          <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
-            Krodinals
-          </h2>
-          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Comming Soon ...
-          </p>
-
+        <Insactions/>
         </div>
       </section>
     </>
