@@ -4,10 +4,11 @@ import { useEffect, useState } from 'react';
 import { Table } from '@radix-ui/themes'; // replace with your actual table library
 
 import { ethers } from "ethers";
+import {NextResponse} from "next/server";
 const provider = new ethers.JsonRpcProvider('https://api.kroma.network');
 
 type Insaction = {
-  id: number;
+  id:number;
   blockNumber: number | null;
   hash: string;
   from: string;
@@ -22,24 +23,39 @@ const Insactions = () => {
   const [insactions, setInsactions] = useState<Insaction[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log('insactions collecting');  
+  // console.log('insactions collecting');
 
+  type InsactionResponse = {
+    statusCode:number;
+    data : Insaction[];
+  }
+  const init = async () => {
+    const res = await fetch('/api/data');
+    const {statusCode, data} : InsactionResponse = await res.json();
+    console.log(data)
+    if(statusCode === 200) {
+      setInsactions(data)
+      setIsLoading(false)
+    }
+  }
   useEffect(() => {
-    fetch('/api/data')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-        setInsactions(data);
-        setIsLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching data: ', error);
-      });
+    init();
+  //   console.log('fetch')
+  //   fetch('/api/data', {headers : { 'Content-Type': 'application/json'}})
+  //     .then(  (response) => {
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
+  // console.log(response.body)
+  //       return NextResponse.json();
+  //     })
+  //     .then(data => {
+  //       setInsactions(data);
+  //       setIsLoading(false);
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching data: ', error);
+  //     });
   }, []);
 
   if (isLoading) {
