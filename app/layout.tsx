@@ -11,7 +11,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const ProtoMonoRegular = localFont({
   src: [
     {
-      path: '../assets/fonts/ProtoMono-Regular.woff2',
+      path: '../assets/fonts/ProtoMono-Regular.woff',
       style: 'normal',
     }
   ],
@@ -21,7 +21,7 @@ const ProtoMonoRegular = localFont({
 const ProtoMonoMedium = localFont({
   src: [
     {
-      path: '../assets/fonts/ProtoMono-Medium.woff2',
+      path: '../assets/fonts/ProtoMono-Medium.woff',
       style: 'normal',
     }
   ],
@@ -31,7 +31,7 @@ const ProtoMonoMedium = localFont({
 const ProtoMonoSemibold = localFont({
   src: [
     {
-      path: '../assets/fonts/ProtoMono-SemiBold.woff2',
+      path: '../assets/fonts/ProtoMono-SemiBold.woff',
       style: 'normal',
     }
   ],
@@ -41,7 +41,7 @@ const ProtoMonoSemibold = localFont({
 const ProtoMonoLight = localFont({
   src: [
     {
-      path: '../assets/fonts/ProtoMono-Light.woff2',
+      path: '../assets/fonts/ProtoMono-Light.woff',
       style: 'normal',
     }
   ],

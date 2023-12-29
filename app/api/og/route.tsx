@@ -5,11 +5,11 @@ import { ogImageSchema } from "@/lib/validations/og"
 export const runtime = "edge"
 
 const protoRegular = fetch(
-  new URL("../../../assets/fonts/ProtoMono-Regular.woff2", import.meta.url)
+  new URL("../../../assets/fonts/ProtoMono-Regular.woff", import.meta.url)
 ).then((res) => res.arrayBuffer())
 
 const protoSemiBold = fetch(
-  new URL("../../../assets/fonts/ProtoMono-SemiBold.woff2", import.meta.url)
+  new URL("../../../assets/fonts/ProtoMono-SemiBold.woff", import.meta.url)
 ).then((res) => res.arrayBuffer())
 
 export async function GET(req: Request) {
@@ -126,13 +126,13 @@ export async function GET(req: Request) {
         height: 630,
         fonts: [
           {
-            name: "Inter",
+            name: "protoRegular",
             data: fontRegular,
             weight: 400,
             style: "normal",
           },
           {
-            name: "Cal Sans",
+            name: "protoSemiBold",
             data: fontBold,
             weight: 700,
             style: "normal",
