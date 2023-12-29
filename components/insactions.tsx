@@ -1,20 +1,24 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Table } from '@radix-ui/themes'; // replace with your actual table library
-
-import { ethers } from "ethers";
-import {NextResponse} from "next/server";
-const provider = new ethers.JsonRpcProvider('https://api.kroma.network');
+import { Table, Button, Section } from '@radix-ui/themes'; // replace with your actual table library
+import { checkCircle, xCircle, pendingCircle } from '@/components/icons';
 
 type Insaction = {
   id:number;
-  blockNumber: number | null;
+  blockNumber: number;
+  txNumber: number | null;
   hash: string;
   from: string;
   to: string | null;
+  tick: string;
   value: string;
-  data: string;  // Rename 'input' to 'data'
+  data: string;
+  op: string;
+  network: string;
+  amt: number;
+  age: string;
+  status: string;
 };
 
 // ...
@@ -22,84 +26,107 @@ type Insaction = {
 const Insactions = () => {
   const [insactions, setInsactions] = useState<Insaction[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  // console.log('insactions collecting');
+  const [page, setPage] = useState(0); // Add state for current page
+  const [totalPages, setTotalPages] = useState(0);
 
   type InsactionResponse = {
     statusCode:number;
     data : Insaction[];
+    totalPages: number;
   }
+
   const init = async () => {
-    const res = await fetch('/api/data');
-    const {statusCode, data} : InsactionResponse = await res.json();
-    console.log(data)
+    const res = await fetch(`/api/data?page=${page}`);
+    console.log("start loading page : ", page);
+    const {statusCode, data, totalPages} : InsactionResponse = await res.json();
     if(statusCode === 200) {
       setInsactions(data)
       setIsLoading(false)
+      setTotalPages(totalPages)
     }
   }
   useEffect(() => {
     init();
-  //   console.log('fetch')
-  //   fetch('/api/data', {headers : { 'Content-Type': 'application/json'}})
-  //     .then(  (response) => {
-  //       if (!response.ok) {
-  //         throw new Error(`HTTP error! status: ${response.status}`);
-  //       }
-  // console.log(response.body)
-  //       return NextResponse.json();
-  //     })
-  //     .then(data => {
-  //       setInsactions(data);
-  //       setIsLoading(false);
-  //     })
-  //     .catch(error => {
-  //       console.error('Error fetching data: ', error);
-  //     });
-  }, []);
-
+  }, [page]);
+  
   if (isLoading) {
-
-    return <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center">
-          <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
+    return (
+      <div className="flex w-full flex-col items-center justify-center gap-4 text-center">
+        <h2 className="w-full font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
           Insactions
-          </h2>
-          <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
-            Loading ...
-          </p></div>;
+        </h2>
+        <p className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+          Loading ...
+        </p>
+      </div>
+    );
   }
 
   return (
     <div>
-      <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
+      <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl flex justify-center">
         Insactions
       </h2>
-      <Table.Root>
+      <div className="container w-full flex mt-9 gap-2 justify-center">
+      <Button className="bg-white text-black" onClick={() => setPage(1)}>First</Button>
+      <Button className="bg-white text-black" onClick={() => setPage(page - 1)}>{'<'}</Button>
+      <Button className="bg-white text-black aria-disabled)">{page + 1} of {totalPages + 1}</Button>
+      <Button className="bg-white text-black" onClick={() => setPage(page + 1)}>{'>'}</Button>
+      <Button className="bg-white text-black" onClick={() => setPage(totalPages)}>last</Button>
+      </div>
+      <Table.Root className="mt-6">
         <Table.Header>
           <Table.Row>
-            <Table.ColumnHeaderCell>Block Number</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Hash</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>From</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>To</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Value</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell>Data</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center">Tx Hash</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center">Network</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center">Block #</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center">Tx #</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center">From</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center">To</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center">Tick</Table.ColumnHeaderCell>
+            {/* <Table.ColumnHeaderCell>Value</Table.ColumnHeaderCell> */}
+            <Table.ColumnHeaderCell className="text-center">Operator</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center">Amount</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center">Age</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center">status</Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
 
         <Table.Body>
           {insactions.map((insaction) => (
-            <Table.Row key={insaction.id}>
-              <Table.RowHeaderCell>{insaction.blockNumber}</Table.RowHeaderCell>
-              <Table.Cell>{insaction.hash}</Table.Cell>
-              <Table.Cell>{insaction.from}</Table.Cell>
-              <Table.Cell>{insaction.to}</Table.Cell>
-              <Table.Cell>{insaction.value}</Table.Cell>
-              <Table.Cell>{insaction.data}</Table.Cell>
+            <Table.Row key={insaction.hash}>
+              <Table.RowHeaderCell className="text-center text-monkeyYellow">
+                <a
+                  href={`https://kromascan.com/tx/${insaction.hash}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {insaction.hash.substring(0, 8)}
+                </a>
+              </Table.RowHeaderCell>
+              <Table.Cell className="text-center">{insaction.network}</Table.Cell>
+              <Table.Cell className="text-center">{insaction.blockNumber}</Table.Cell>
+              <Table.Cell className="text-center">{insaction.txNumber}</Table.Cell>
+              <Table.Cell className="text-center">{insaction.from.substring(0, 8)}</Table.Cell>
+              <Table.Cell className="text-center">{insaction.to?.substring(0, 8)}</Table.Cell>
+              <Table.Cell className="text-center">{insaction.tick}</Table.Cell>
+              <Table.Cell className="text-center">{insaction.op || "N/A"}</Table.Cell>
+              <Table.Cell className="text-center">{insaction.amt || "N/A"}</Table.Cell>
+              <Table.Cell className="text-center">{insaction.age}</Table.Cell>
+              <Table.Cell className="text-center">{insaction.status}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
       </Table.Root>
-    </div>
+      <div className="container w-full flex mt-6 gap-2 justify-center">
+      <Button className="bg-white text-black" onClick={() => setPage(1)}>First</Button>
+      <Button className="bg-white text-black" onClick={() => setPage(page - 1)}>{'<'}</Button>
+      <Button className="bg-white text-black aria-disabled)">{page + 1} of {totalPages + 1}</Button>
+      <Button className="bg-white text-black" onClick={() => setPage(page + 1)}>{'>'}</Button>
+      <Button className="bg-white text-black" onClick={() => setPage(totalPages)}>last</Button>
+      
+      </div>
+      </div>
   );
 }
 

@@ -24,6 +24,10 @@ import {
   Twitter,
   User,
   X,
+  CheckCircle,
+  XCircle,
+  CircleDashed,
+
   type Icon as LucideIcon,
 } from "lucide-react"
 
@@ -54,6 +58,9 @@ export const Icons = {
   sun: SunMedium,
   moon: Moon,
   laptop: Laptop,
+  checkCircle: CheckCircle,
+  xCircle: XCircle,
+  pendingCircle: CircleDashed,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

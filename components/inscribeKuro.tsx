@@ -100,7 +100,7 @@ const InscribeKuro = ({ progressRatio, totalMinted, totalSupply }) => {
         {/* Removed comment for brevity */}
         <h1 className="text-scale-down text-center font-proto-mono text-xl lg:text-6xl">GET FIRST INSCRIPTION</h1>
         <p className="text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground text-2xl sm:leading-8">on <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>Kroma</a></p>
-        <Progress value={progressRatio}/>
+        <Progress value={progressRatio} style={{zIndex:"-1"}}/>
         <p className="w-full text-right sm:text-sm lg:text-sm">
           <span style={{ color: '#45d620' }}>{totalMinted}</span> of 
           <span>{isMobile ? ' 21B MINTED' : ' '+totalSupply+' KRO minted.'}</span> 
