@@ -28,12 +28,12 @@ import {
   XCircle,
   CircleDashed,
 
-  type Icon as LucideIcon,
+  type XIcon as LucideIcon,
 } from "lucide-react"
 
 import { SvgImages } from "@/components/svgImages"
 
-export type Icon = LucideIcon
+export type Icon = typeof LucideIcon
 
 export const Icons = {
   logo: SvgImages.logo,

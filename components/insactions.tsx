@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { Table, Button, Section } from '@radix-ui/themes'; // replace with your actual table library
-import { checkCircle, xCircle, pendingCircle } from '@/components/icons';
+// import { checkCircle, xCircle, pendingCircle } from '@/components/icons';
+import { NextResponse } from 'next/server'
 
 type Insaction = {
   id:number;
@@ -33,16 +34,25 @@ const Insactions = () => {
     statusCode:number;
     data : Insaction[];
     totalPages: number;
+    message: string;
   }
+  
+
 
   const init = async () => {
     const res = await fetch(`/api/data?page=${page}`);
     console.log("start loading page : ", page);
-    const {statusCode, data, totalPages} : InsactionResponse = await res.json();
-    if(statusCode === 200) {
-      setInsactions(data)
-      setIsLoading(false)
-      setTotalPages(totalPages)
+    console.log("res : ", res);
+    if (!res.ok) {
+      console.error('Error fetching data:', res.status);
+      // Handle the error here, maybe set a state to show an error message to the user
+      return;
+    }
+    const { statusCode, data, totalPages }: InsactionResponse = await res.json();
+    if (statusCode === 200) {
+      setInsactions(data);
+      setIsLoading(false);
+      setTotalPages(totalPages);
     }
   }
   useEffect(() => {
