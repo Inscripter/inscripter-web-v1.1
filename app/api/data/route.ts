@@ -5,16 +5,16 @@ import { env } from "@/env.mjs";
 import { ethers } from "ethers";
 import { formatDistanceToNow } from 'date-fns';
 
-const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
-const provider = new ethers.JsonRpcProvider('https://api.kroma.network');
-const BLOCK_TIME_IN_SECONDS = 2;
+// const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
+// const provider = new ethers.JsonRpcProvider('https://api.kroma.network');
+// const BLOCK_TIME_IN_SECONDS = 2;
 
-const calculateAge = async (blockNumber: number) => {
-  const currentBlockNumber = await provider.getBlockNumber();
-  const ageInSeconds = (currentBlockNumber - blockNumber) * BLOCK_TIME_IN_SECONDS;
-  const ageDate = new Date(Date.now() - ageInSeconds * 1000);
-  return formatDistanceToNow(ageDate, { addSuffix: true });
-};
+// const calculateAge = async (blockNumber: number) => {
+//   const currentBlockNumber = await provider.getBlockNumber();
+//   const ageInSeconds = (currentBlockNumber - blockNumber) * BLOCK_TIME_IN_SECONDS;
+//   const ageDate = new Date(Date.now() - ageInSeconds * 1000);
+//   return formatDistanceToNow(ageDate, { addSuffix: true });
+// };
 
 type Insaction = {
   id:number;
@@ -70,10 +70,10 @@ export async function GET(req: NextRequest, res: NextResponse) {
     });
   }
 
-  const dataWithAge = await Promise.all(data.map(async item => {
-    const age = await calculateAge(item.blockNumber);
-    return { ...item, age };
-  }));
+  // const dataWithAge = await Promise.all(data.map(async item => {
+  //   const age = await calculateAge(item.blockNumber);
+  //   return { ...item, age };
+  // }));
 
   if (totalRows === null) {
     return NextResponse.json({
@@ -86,7 +86,8 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
   return NextResponse.json({
     statusCode: 200,
-    data: dataWithAge,
+    // data: dataWithAge,
+    data: data,
     totalPages,
     message: "200 OK"
   });
