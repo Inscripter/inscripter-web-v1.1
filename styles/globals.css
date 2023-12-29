@@ -2,35 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "ProtoMono-SemiBold";
-  font-weight: 600;
-  src: url("../assets/fonts/ProtoMono-SemiBold.woff2") format("woff2");
-}
-@font-face {
-  font-family: "ProtoMono-Medium";
-  font-weight: 500;
-  src: url("../assets/fonts/ProtoMono-Medium.woff2") format("woff2");
-}
 
-@font-face {
-  font-family: "ProtoMono-Regular";
-  font-weight: 400;
-  src: url("../assets/fonts/ProtoMono-Regular.woff2") format("woff2");
-}
-
-@font-face {
-  font-family: "ProtoMono-Light";
-  font-weight: 300;
-  src: url("../assets/fonts/ProtoMono-Light.woff2") format("woff2");
-}
 
 @layer base {
   :root {
-    --font-proto-mono-regular: "ProtoMono-Regular";
-    --font-proto-mono-semibold: "ProtoMono-SemiBold";
-    --font-proto-mono-medium: "ProtoMono-Medium";
-    --font-proto-mono-light: "ProtoMono-Light";
 
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
