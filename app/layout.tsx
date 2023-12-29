@@ -109,8 +109,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           <div>
             <Web3Modal>
               {children}
-              <Analytics />
-              <Toaster />
+              {/* <Analytics />
+              <Toaster /> */}
               <TailwindIndicator />
             </Web3Modal>
           </div>
