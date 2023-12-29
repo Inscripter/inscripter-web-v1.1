@@ -49,7 +49,7 @@ export default async function IndexPage() {
       <InscribeKuro progressRatio={progressRatio} totalSupply={totalSupply} totalMinted={totalMinted}/>
       </section>
       <section id="insactions" className="container py-8 md:py-12 lg:py-24 h-full">
-        <Insactions/>
+        {/* <Insactions/> */}
       </section>
     </>
   )
