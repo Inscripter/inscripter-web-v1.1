@@ -8,7 +8,7 @@ import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const protoMonoRegular = localFont({
+const ProtoMonoRegular = localFont({
   src: [
     {
       path: '../assets/fonts/ProtoMono-Regular.woff2',
@@ -18,7 +18,7 @@ const protoMonoRegular = localFont({
   display: 'swap',
   variable: '--font-proto-mono-regular',
 });
-const protoMonoMedium = localFont({
+const ProtoMonoMedium = localFont({
   src: [
     {
       path: '../assets/fonts/ProtoMono-Medium.woff2',
@@ -28,7 +28,7 @@ const protoMonoMedium = localFont({
   display: 'swap',
   variable: '--font-proto-mono-medium',
 });
-const protoMonoSemibold = localFont({
+const ProtoMonoSemibold = localFont({
   src: [
     {
       path: '../assets/fonts/ProtoMono-SemiBold.woff2',
@@ -38,7 +38,7 @@ const protoMonoSemibold = localFont({
   display: 'swap',
   variable: '--font-proto-mono-semibold',
 });
-const protoMonoLight = localFont({
+const ProtoMonoLight = localFont({
   src: [
     {
       path: '../assets/fonts/ProtoMono-Light.woff2',
@@ -102,9 +102,9 @@ export const metadata = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${protoMonoLight.variable} ${protoMonoRegular.variable} ${protoMonoSemibold.variable} ${protoMonoMedium.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${ProtoMonoLight.variable} ${ProtoMonoRegular.variable} ${ProtoMonoSemibold.variable} ${ProtoMonoMedium.variable}`}>
       <head />
-      <body className="min-h-screen bg-background font-protoMono-semibold antialiased">
+      <body className="min-h-screen bg-background font-ProtoMono-SemiBold antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div>
             <Web3Modal>

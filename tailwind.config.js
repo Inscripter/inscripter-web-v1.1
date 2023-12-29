@@ -62,10 +62,10 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        'protoMono-regular': ['var(--font-proto-mono-regular)'],
-        'protoMono-semibold': ['var(--font-proto-mono-semibold)'],
-        'protoMono-medium': ['var(--font-proto-mono-medium)'],
-        'protoMono-light': ['var(--font-proto-mono-light)'],
+        'ProtoMono-regular': ['var(--font-proto-mono-regular)'],
+        'ProtoMono-SemiBold': ['var(--font-proto-mono-semibold)'],
+        'ProtoMono-medium': ['var(--font-proto-mono-medium)'],
+        'ProtoMono-light': ['var(--font-proto-mono-light)'],
       },
       keyframes: {
         "accordion-down": {
