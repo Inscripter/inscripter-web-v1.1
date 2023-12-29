@@ -8,6 +8,47 @@ import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
+const protoMonoRegular = localFont({
+  src: [
+    {
+      path: '../assets/fonts/ProtoMono-Regular.woff2',
+      style: 'normal',
+    }
+  ],
+  display: 'swap',
+  variable: '--font-proto-mono-regular',
+});
+const protoMonoMedium = localFont({
+  src: [
+    {
+      path: '../assets/fonts/ProtoMono-Medium.woff2',
+      style: 'normal',
+    }
+  ],
+  display: 'swap',
+  variable: '--font-proto-mono-medium',
+});
+const protoMonoSemibold = localFont({
+  src: [
+    {
+      path: '../assets/fonts/ProtoMono-SemiBold.woff2',
+      style: 'normal',
+    }
+  ],
+  display: 'swap',
+  variable: '--font-proto-mono-semibold',
+});
+const protoMonoLight = localFont({
+  src: [
+    {
+      path: '../assets/fonts/ProtoMono-Light.woff2',
+      style: 'normal',
+    }
+  ],
+  display: 'swap',
+  variable: '--font-proto-mono-light',
+});
+
 interface RootLayoutProps {
   children: React.ReactNode
 }
@@ -61,7 +102,7 @@ export const metadata = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={`${protoMonoLight.variable} ${protoMonoRegular.variable} ${protoMonoSemibold.variable} ${protoMonoMedium.variable}`}>
       <head />
       <body className="min-h-screen bg-background font-protoMono-semibold antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
