@@ -1,13 +1,43 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
 
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+model Balance {
+  walletHash    String  @id
+  network       String
+  bal           BigInt
+  blockNumber   BigInt
+  txNumber      Int       // Changed from Int16 to Int
+  hash          String
+  p             String
+  op            String
+  tick          String
+  totalMintAmt  BigInt
+  totalSupply   BigInt
+}
+
+model Insactions {
+  hash           String  @id
+  blockNumber    BigInt
+  network        String
+  from           String
+  to             String
+  value          BigInt
+  data           String
+  p              String
+  tick           String
+  amt            BigInt
+  op             String
+  max            BigInt
+  lim            BigInt
+  txNumber       Int       // Changed from Int16 to Int
+  isAbleHexToJson Boolean
+  status         Int       // Changed from Int16 to Int
 }
 
 model Account {

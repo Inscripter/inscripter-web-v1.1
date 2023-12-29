@@ -108,7 +108,7 @@
     "wagmi": "^1.4.12",
     "zod": "^3.21.4"
   },
-  "devDependencies": {
+  "devDependencies": {  
     "@commitlint/cli": "^17.6.1",
     "@commitlint/config-conventional": "^17.6.1",
     "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
