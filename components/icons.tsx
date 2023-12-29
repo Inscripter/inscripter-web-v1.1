@@ -26,14 +26,13 @@ import {
   X,
   CheckCircle,
   XCircle,
-  CircleDashed,
 
-  type XIcon as LucideIcon,
+  type Icon as LucideIcon,
 } from "lucide-react"
 
 import { SvgImages } from "@/components/svgImages"
 
-export type Icon = typeof LucideIcon
+export type Icon = LucideIcon
 
 export const Icons = {
   logo: SvgImages.logo,
@@ -60,7 +59,7 @@ export const Icons = {
   laptop: Laptop,
   checkCircle: CheckCircle,
   xCircle: XCircle,
-  pendingCircle: CircleDashed,
+
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden="true"

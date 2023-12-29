@@ -36,8 +36,6 @@ const Insactions = () => {
     totalPages: number;
     message: string;
   }
-  
-
 
   const init = async () => {
     const res = await fetch(`/api/data?page=${page}`);
