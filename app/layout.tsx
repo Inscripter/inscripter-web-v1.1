@@ -7,6 +7,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import "@/styles/globals.css"
 
 const ProtoMonoRegular = localFont({
   src: [
