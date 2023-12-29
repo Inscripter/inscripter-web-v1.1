@@ -31,7 +31,7 @@ export const env = createEnv({
     GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
     GITHUB_ACCESS_TOKEN: process.env.GITHUB_ACCESS_TOKEN,
     // DATABASE_URL: process.env.DATABASE_URL,
-    SUPABASE_URL: process.env.DATABASE_URL,
+    SUPABASE_URL: process.env.SUPABASE_URL,
     SUPABASE_SERVICE_ROLE_KEY: process.env.SUPABASE_SERVICE_ROLE_KEY,
     // SMTP_FROM: process.env.SMTP_FROM,
     // POSTMARK_API_TOKEN: process.env.POSTMARK_API_TOKEN,

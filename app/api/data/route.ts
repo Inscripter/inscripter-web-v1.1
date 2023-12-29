@@ -86,8 +86,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
   return NextResponse.json({
     statusCode: 200,
-    // data: dataWithAge,
-    data: data,
+    data: dataWithAge,
     totalPages,
     message: "200 OK"
   });
