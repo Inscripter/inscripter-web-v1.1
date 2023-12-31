@@ -122,7 +122,7 @@ const Insactions = () => {
               <Table.Cell className="text-center">{insaction.op || ""}</Table.Cell>
               <Table.Cell className="text-center">{insaction.amt || ""}</Table.Cell>
               <Table.Cell className="text-center nowrap">{insaction.age}</Table.Cell>
-              <Table.Cell className="text-center nowrap">{insaction.status}</Table.Cell>
+              <Table.Cell className="text-center nowrap text-monkeyGreen">{insaction.status}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
