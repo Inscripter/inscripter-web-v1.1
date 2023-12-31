@@ -36,11 +36,11 @@ const Insactions = () => {
     totalPages: number;
     message: string;
   }
-  
 
 
   const init = async () => {
     const res = await fetch(`/api/data?page=${page}`);
+    console.log("type of page : ", typeof page);
     console.log("start loading page : ", page);
     console.log("res : ", res);
     if (!res.ok) {

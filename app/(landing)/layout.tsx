@@ -19,16 +19,28 @@ export default function LandingLayout({
 }: LandingLayoutProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
-  const account = useAccount();
+  const [balance, setBalance] = useState(0);
+  const { address, isConnected } = useAccount()
+  console.log("type of address : ", typeof address);
 
   useEffect(() => { 
     setIsMobile(window.innerWidth <= 640);
     setHasMounted(true);
-  }, []);
+    if ( address && isConnected) {
+      console.log("fetching balance")
+      const res = fetch(`/api/getKroBalance?walletAddress=${address}`)
+        .then(res => res.json())
+        .then(data => setBalance(data.balance))
+        .catch(console.error);
+        console.log("balance : ", balance);
+        console.log("address : ", address);
+    }
+  }, [address, isConnected]);
 
   if (!hasMounted) {
     return null;
   }
+
 
   return (
     <div className="flex w-full min-h-screen flex-col">
@@ -43,7 +55,7 @@ export default function LandingLayout({
         <ConnectButton/>
         {isMobile? "" : <div className="w-3"></div>}
         <div className="flex justify-end mr-4">
-       {account.isConnected && <div> - KRO</div>}
+       {isConnected && <div> {balance} KRO</div>}
       </div>
       </div>
 
