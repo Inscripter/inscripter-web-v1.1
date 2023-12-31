@@ -54,7 +54,7 @@ export default function LandingLayout({
                   "scale-[1] fixed right-0 flex-col sm:h-20 lg:h-12 items-end justify-end py-2 mr-4"}>
         <ConnectButton/>
         {isMobile? "" : <div className="w-3"></div>}
-        <div className="flex justify-end mr-4">
+        <div className="flex justify-end mr-4 font-proto-mono">
        {isConnected && <div> {balance} KRO</div>}
       </div>
       </div>

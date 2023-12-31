@@ -97,8 +97,8 @@ const Insactions = () => {
             {/* <Table.ColumnHeaderCell>Value</Table.ColumnHeaderCell> */}
             <Table.ColumnHeaderCell className="text-center">Operator</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell className="text-center">Amount</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="text-center">Age</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="text-center">status</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center nowrap">Age</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center nowrap">status</Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -121,8 +121,8 @@ const Insactions = () => {
               <Table.Cell className="text-center">{insaction.tick}</Table.Cell>
               <Table.Cell className="text-center">{insaction.op || ""}</Table.Cell>
               <Table.Cell className="text-center">{insaction.amt || ""}</Table.Cell>
-              <Table.Cell className="text-center">{insaction.age}</Table.Cell>
-              <Table.Cell className="text-center">{insaction.status}</Table.Cell>
+              <Table.Cell className="text-center nowrap">{insaction.age}</Table.Cell>
+              <Table.Cell className="text-center nowrap">{insaction.status}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
