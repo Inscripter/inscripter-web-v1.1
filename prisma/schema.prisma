@@ -18,7 +18,7 @@ model Balance {
   op            String
   tick          String
   totalMintAmt  BigInt
-  totalSupply   BigInt
+  maxSupply   BigInt
 }
 
 model Insactions {

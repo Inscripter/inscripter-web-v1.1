@@ -47,7 +47,8 @@ export async function GET(req: NextRequest, res: NextResponse) {
   // Get total row count
   const { count: totalRows, error: countError } = await supabase
     .from('insactions-v0.0.1')
-    .select('', { count: 'exact' });
+    .select('', { count: 'exact' })
+    .filter('status', 'eq', 20);
 
   if (countError) {
     return NextResponse.json({
@@ -59,6 +60,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
   const { data, error } = await supabase
     .from('insactions-v0.0.1')
     .select('*')
+    .filter('status', 'eq', 20)
     .range(page * pageSize, (page + 1) * pageSize - 1)
     .order('blockNumber', { ascending: false })
     .order('txNumber', { ascending: false });

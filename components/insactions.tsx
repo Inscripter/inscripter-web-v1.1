@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Table, Button, Section } from '@radix-ui/themes'; // replace with your actual table library
+import { Table, Button, Section, ScrollArea } from '@radix-ui/themes'; // replace with your actual table library
 // import { checkCircle, xCircle, pendingCircle } from '@/components/icons';
 import { NextResponse } from 'next/server'
 
@@ -74,6 +74,7 @@ const Insactions = () => {
 
   return (
     <div>
+      <ScrollArea scrollbars='horizontal'>
       <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl flex justify-center">
         Insactions
       </h2>
@@ -87,10 +88,9 @@ const Insactions = () => {
       <Table.Root className="mt-6">
         <Table.Header>
           <Table.Row>
-            <Table.ColumnHeaderCell className="text-center">Tx Hash</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center">Tx</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell className="text-center">Network</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="text-center">Block #</Table.ColumnHeaderCell>
-            <Table.ColumnHeaderCell className="text-center">Tx #</Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell className="text-center">Block</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell className="text-center">From</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell className="text-center">To</Table.ColumnHeaderCell>
             <Table.ColumnHeaderCell className="text-center">Tick</Table.ColumnHeaderCell>
@@ -116,12 +116,11 @@ const Insactions = () => {
               </Table.RowHeaderCell>
               <Table.Cell className="text-center">{insaction.network}</Table.Cell>
               <Table.Cell className="text-center">{insaction.blockNumber}</Table.Cell>
-              <Table.Cell className="text-center">{insaction.txNumber}</Table.Cell>
               <Table.Cell className="text-center">{insaction.from.substring(0, 8)}</Table.Cell>
               <Table.Cell className="text-center">{insaction.to?.substring(0, 8)}</Table.Cell>
               <Table.Cell className="text-center">{insaction.tick}</Table.Cell>
-              <Table.Cell className="text-center">{insaction.op || "N/A"}</Table.Cell>
-              <Table.Cell className="text-center">{insaction.amt || "N/A"}</Table.Cell>
+              <Table.Cell className="text-center">{insaction.op || ""}</Table.Cell>
+              <Table.Cell className="text-center">{insaction.amt || ""}</Table.Cell>
               <Table.Cell className="text-center">{insaction.age}</Table.Cell>
               <Table.Cell className="text-center">{insaction.status}</Table.Cell>
             </Table.Row>
@@ -136,6 +135,7 @@ const Insactions = () => {
       <Button className="bg-white text-black" onClick={() => setPage(totalPages)}>last</Button>
       
       </div>
+      </ScrollArea>
       </div>
   );
 }

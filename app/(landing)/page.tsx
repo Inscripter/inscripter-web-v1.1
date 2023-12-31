@@ -1,3 +1,7 @@
+'use client'
+
+import * as React from "react"
+
 import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { buttonVariants } from "@/components/ui/button"
@@ -10,47 +14,62 @@ import { Underline } from "lucide-react"
 import { InscribeKuro } from "@/components/inscribeKuro"
 import { Insactions } from "@/components/insactions"
 
-
-async function getGitHubStars(): Promise<string | null> {
+async function getTotalMintAmt() {
   try {
-    const response = await fetch(
-      "https://api.github.com/repos/inscripter/inscripter",
-      {
-        headers: {
-          Accept: "application/vnd.github+json",
-          Authorization: `Bearer ${env.GITHUB_ACCESS_TOKEN}`,
-        },
-        next: {
-          revalidate: 60,
-        },
-      }
-    )
-
-    if (!response?.ok) {
-      return null
+    const res = await fetch('/api/totalMintAmt');
+    if (!res.ok) {
+      throw new Error(res.statusText);
     }
-
-    const json = await response.json()
-
-    return parseInt(json["stargazers_count"]).toLocaleString()
+    const { data } = await res.json();
+    return data[0]?.totalMintAmt || 0;
   } catch (error) {
-    return null
+    return 0;
   }
 }
 
-export default async function IndexPage() {
-  const stars = await getGitHubStars()
-  let totalSupply = 21000000000
-  let totalMinted = 0
-  const progressRatio = totalMinted / totalSupply * 100;
+export default function IndexPage() {
+  const [totalMintAmt, setTotalMintAmt] = React.useState(0);
+  let maxSupply = 21000000000;
+  const progressRatio = totalMintAmt / maxSupply * 100;
+
+  React.useEffect(() => {
+    getTotalMintAmt().then(setTotalMintAmt);
+  }, []);
 
   return (
-    <><section id="landing">
-      <InscribeKuro progressRatio={progressRatio} totalSupply={totalSupply} totalMinted={totalMinted}/>
+    <>
+      <section id="landing">
+        <InscribeKuro progressRatio={progressRatio} maxSupply={maxSupply} totalMintAmt={totalMintAmt}/>
       </section>
       <section id="insactions" className="container py-8 md:py-12 lg:py-24 h-full">
         <Insactions/>
       </section>
     </>
-  )
+  );
 }
+// async function getGitHubStars(): Promise<string | null> {
+//   try {
+//     const response = await fetch(
+//       "https://api.github.com/repos/inscripter/inscripter",
+//       {
+//         headers: {
+//           Accept: "application/vnd.github+json",
+//           Authorization: `Bearer ${env.GITHUB_ACCESS_TOKEN}`,
+//         },
+//         next: {
+//           revalidate: 60,
+//         },
+//       }
+//     )
+
+//     if (!response?.ok) {
+//       return null
+//     }
+
+//     const json = await response.json()
+
+//     return parseInt(json["stargazers_count"]).toLocaleString()
+//   } catch (error) {
+//     return null
+//   }
+// }

@@ -3,7 +3,7 @@
 import React from 'react';
 import { Table } from '@radix-ui/themes'; // Replace 'some-library' with the actual library name
 
-const Insriptions = ({ progressRatio, totalMinted, totalSupply }) => {
+const Insriptions = ({ progressRatio, totalMintAmt, maxSupply }) => {
     return (
         <Table.Root>
             <Table.Header>
