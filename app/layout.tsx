@@ -104,7 +104,13 @@ export const metadata = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning className={`${ProtoMonoLight.variable} ${ProtoMonoRegular.variable} ${ProtoMonoSemibold.variable} ${ProtoMonoMedium.variable}`}>
-      <head />
+      <head>
+      <meta property="og:url" content="https://inscripter.io/"/>
+      <meta property="og:title" content="inscripter"/>
+      <meta property="og:type" content="Web3 Inscription Viewer"/>
+      <meta property="og:image" content="https://inscripter.io/android-chrome-512x512.png"/>
+      <meta property="og:description" content="Inscripter enables you to intuitively explore and search inscriptions on the blockchain."/>
+      </head>
       <body className="min-h-screen bg-background font-ProtoMono-SemiBold antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div>
