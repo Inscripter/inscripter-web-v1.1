@@ -9,6 +9,7 @@ import { ConnectButton } from "@/components/ui/wallet-connect-btn"
 import { MainNav } from "@/components/main-nav"
 import { SiteFooter } from "@/components/site-footer"
 import { AlignJustify } from "lucide-react"
+import { SvgImages } from "@/components/svgImages"
 
 interface LandingLayoutProps {
   children: React.ReactNode
@@ -55,8 +56,19 @@ export default function LandingLayout({
         <ConnectButton/>
         {isMobile? "" : <div className="w-3"></div>}
         <div className="flex justify-end mr-4 font-proto-mono">
-       {isConnected && <div> {balance} KRO</div>}
-      </div>
+          {isConnected && (
+            <div className="flex">
+              You have  
+              <div className="text-monkeyGreen ml-2 mr-2">
+                {new Intl.NumberFormat().format(balance)}
+              </div>
+              KRO
+              <div className="ml-2">
+                <SvgImages.kroCoinIcon/>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       <main className="flex-1">{children}</main>

@@ -36,6 +36,7 @@ export type Icon = LucideIcon
 
 export const Icons = {
   logo: SvgImages.logo,
+  kroCoinIcon: SvgImages.kroCoinIcon,
   openMenu: AlignJustify,
   close: X,
   spinner: Loader2,

@@ -79,7 +79,7 @@ const Insactions = () => {
         Insactions
       </h2>
       <div className="container w-full flex mt-9 gap-2 justify-center">
-      <Button className="bg-white text-black" onClick={() => setPage(1)}>First</Button>
+      <Button className="bg-white text-black" onClick={() => setPage(0)}>First</Button>
       <Button className="bg-white text-black" disabled={page <= 0} onClick={() => setPage(Math.max(0, page - 1))}>{'<'}</Button>
       <Button className="bg-white text-black aria-disabled)">{page + 1} of {totalPages}</Button>
       <Button className="bg-white text-black" disabled={page >= totalPages - 1} onClick={() => setPage(Math.min(page + 1, totalPages - 1))}>{'>'}</Button>

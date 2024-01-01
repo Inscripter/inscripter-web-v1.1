@@ -6,10 +6,10 @@ export const landingConfig: LandingConfig = {
       title: "Insactions",
       href: "/#insactions",
     },
-    // {
-    //   title: "Pricing",
-    //   href: "/pricing",
-    // },
+    {
+      title: "Holders",
+      href: "/holders",
+    },
     // {
     //   title: "Blog",
     //   href: "/blog",
