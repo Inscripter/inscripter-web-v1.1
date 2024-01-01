@@ -40,29 +40,32 @@ export default function InscriptersPage() {
 
   if (isLoading) {
     return (
-      <section className="w-full container flex flex-col  gap-6 py-8 md:max-w-[64rem] md:py-12 lg:py-24">
-      <h2 className="flex w-full font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl flex justify-center">
+      <section className="container flex flex-col gap-6 py-8 mt-24 md:mt-0 md:max-w-[64rem] md:py-12 lg:py-24">
+        <div className="mt-24">     
+        <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl flex justify-center">
           Inscripters
         </h2>
         <p className="justify-center text-center leading-normal text-muted-foreground sm:text-lg sm:leading-7">
           Loading ...
         </p>
+        </div> 
       </section>
     );
   }
 
   return (
-    <section className="container flex flex-col  gap-6 py-8 md:max-w-[64rem] md:py-12 lg:py-24">
+    <section className="container flex flex-col py-8 md:max-w-[64rem] md:py-12 lg:py-24">
+      <div className="mt-24">
       <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl flex justify-center">
         Inscripters
       </h2>
-      <ScrollArea>
+      <ScrollArea className="mt-6">
         <Table.Root>
           <Table.Header>
             <Table.Row>
-              <Table.ColumnHeaderCell className="text-center">Wallet Address</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell className="text-center nowrap">Wallet</Table.ColumnHeaderCell>
               
-              <Table.ColumnHeaderCell className="text-center">Balance</Table.ColumnHeaderCell>
+              <Table.ColumnHeaderCell className="text-center nowrap">Balance</Table.ColumnHeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
@@ -85,6 +88,7 @@ export default function InscriptersPage() {
           </Table.Body>
         </Table.Root>
       </ScrollArea>
+      </div>
       </section>
   );
 }

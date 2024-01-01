@@ -22,19 +22,15 @@ export default function LandingLayout({
   const [hasMounted, setHasMounted] = useState(false);
   const [balance, setBalance] = useState(0);
   const { address, isConnected } = useAccount()
-  console.log("type of address : ", typeof address);
 
   useEffect(() => { 
     setIsMobile(window.innerWidth <= 640);
     setHasMounted(true);
     if ( address && isConnected) {
-      console.log("fetching balance")
       const res = fetch(`/api/getKroBalance?walletAddress=${address}`)
         .then(res => res.json())
         .then(data => setBalance(data.balance))
         .catch(console.error);
-        console.log("balance : ", balance);
-        console.log("address : ", address);
     }
   }, [address, isConnected]);
 

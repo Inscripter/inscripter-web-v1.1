@@ -41,9 +41,6 @@ const Insactions = () => {
   const init = async () => {
     setIsLoading(true);
     const res = await fetch(`/api/data?page=${page}`);
-    console.log("type of page : ", typeof page);
-    console.log("start loading page : ", page);
-    console.log("res : ", res);
     if (!res.ok) {
       console.error('Error fetching data:', res.status);
       // Handle the error here, maybe set a state to show an error message to the user

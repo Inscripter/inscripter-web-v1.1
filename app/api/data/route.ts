@@ -41,10 +41,8 @@ type ResponseData = {
 }
 
 export async function GET(req: NextRequest, res: NextResponse) {
-  console.log("page req: ", req.json);
   const pageParam = req.nextUrl.searchParams.get('page');
   const page = Number(pageParam) || 0;
-  console.log("const page = Number(req.json) || 0;, page", page);
   const pageSize = 20;
 
   // Get total row count

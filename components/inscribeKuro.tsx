@@ -84,7 +84,6 @@ const InscribeKuro = ({ progressRatio, totalMintAmt, maxSupply }) => {
   useEffect(() => {
     if (!data?.hash) return;
     // Other logic related to transaction completion
-    console.log('Transaction hash:', data.hash);
   }, [data, chainId]);
 
   return (
