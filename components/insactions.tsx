@@ -39,6 +39,7 @@ const Insactions = () => {
 
 
   const init = async () => {
+    setIsLoading(true);
     const res = await fetch(`/api/data?page=${page}`);
     console.log("type of page : ", typeof page);
     console.log("start loading page : ", page);
@@ -74,17 +75,18 @@ const Insactions = () => {
 
   return (
     <div>
-      <ScrollArea scrollbars='horizontal'>
       <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl flex justify-center">
         Insactions
       </h2>
       <div className="container w-full flex mt-9 gap-2 justify-center">
       <Button className="bg-white text-black" onClick={() => setPage(1)}>First</Button>
-      <Button className="bg-white text-black" onClick={() => setPage(page - 1)}>{'<'}</Button>
+      <Button className="bg-white text-black" disabled={page <= 0} onClick={() => setPage(Math.max(0, page - 1))}>{'<'}</Button>
       <Button className="bg-white text-black aria-disabled)">{page + 1} of {totalPages + 1}</Button>
-      <Button className="bg-white text-black" onClick={() => setPage(page + 1)}>{'>'}</Button>
+      <Button className="bg-white text-black" disabled={page >= totalPages} onClick={() => setPage(Math.min(page + 1, totalPages))}>{'>'}</Button>
       <Button className="bg-white text-black" onClick={() => setPage(totalPages)}>last</Button>
+
       </div>
+      <ScrollArea scrollbars='horizontal'>
       <Table.Root className="mt-6">
         <Table.Header>
           <Table.Row>
