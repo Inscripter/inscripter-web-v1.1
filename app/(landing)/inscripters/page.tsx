@@ -9,24 +9,24 @@ type Holder = {
   bal: number;
 };
 
-export default function HoldersPage() {
-  const [holders, setHolders] = useState<Holder[]>([]);
+export default function InscriptersPage() {
+  const [inscripters, setInscripters] = useState<Holder[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchHolders = async () => {
+    const fetchInscripters = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('/api/holders');
+        const response = await fetch('/api/inscripters');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const responseData = await response.json();
         if (responseData.statusCode === 200) {
-          setHolders(responseData.data);
+          setInscripters(responseData.data);
         } else {
           // Handle other status codes or errors
-          console.error('Error fetching holders:', responseData.message);
+          console.error('Error fetching inscripters:', responseData.message);
         }
       } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
@@ -35,24 +35,26 @@ export default function HoldersPage() {
       }
     };
 
-    fetchHolders();
+    fetchInscripters();
   }, []);
 
   if (isLoading) {
     return (
-      <div>
-        <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl flex justify-center">
-          Holders
+      <section className="w-full container flex flex-col  gap-6 py-8 md:max-w-[64rem] md:py-12 lg:py-24">
+      <h2 className="flex w-full font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl flex justify-center">
+          Inscripters
         </h2>
-        <div>Loading...</div>
-      </div>
+        <p className="justify-center text-center leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+          Loading ...
+        </p>
+      </section>
     );
   }
 
   return (
     <section className="container flex flex-col  gap-6 py-8 md:max-w-[64rem] md:py-12 lg:py-24">
       <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl flex justify-center">
-        Holders
+        Inscripters
       </h2>
       <ScrollArea>
         <Table.Root>
@@ -64,7 +66,7 @@ export default function HoldersPage() {
             </Table.Row>
           </Table.Header>
           <Table.Body>
-                  {holders.map((holder, index) => (
+                  {inscripters.map((holder, index) => (
           <Table.Row key={index}>
             <Table.Cell className="text-center text-monkeyYellow">
               <a

@@ -7,8 +7,8 @@ export const landingConfig: LandingConfig = {
       href: "/#insactions",
     },
     {
-      title: "Holders",
-      href: "/holders",
+      title: "Inscripters",
+      href: "/inscripters",
     },
     // {
     //   title: "Blog",

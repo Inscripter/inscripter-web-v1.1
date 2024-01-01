@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
     // Call the stored procedure latest_balance_per_wallet
     const { data, error } = await supabase.rpc('latest_balance_per_wallet');
 
-    console.log("holders/route data: ", data);
+    console.log("inscripters/route data: ", data);
     
     if (error) {
         return NextResponse.json({
