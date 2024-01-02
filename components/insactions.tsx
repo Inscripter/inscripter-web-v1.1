@@ -126,6 +126,7 @@ const Insactions = () => {
           ))}
         </Table.Body>
       </Table.Root>
+      </ScrollArea>
       <div className="container w-full flex mt-6 gap-2 justify-center">
       <Button className="bg-white text-black" onClick={() => setPage(1)}>First</Button>
       <Button className="bg-white text-black" onClick={() => setPage(page - 1)}>{'<'}</Button>
@@ -134,7 +135,7 @@ const Insactions = () => {
       <Button className="bg-white text-black" onClick={() => setPage(totalPages)}>last</Button>
       
       </div>
-      </ScrollArea>
+
       </div>
   );
 }
