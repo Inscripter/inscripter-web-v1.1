@@ -59,7 +59,7 @@ export default function InscriptersPage() {
       <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl flex justify-center">
         Inscripters
       </h2>
-      <ScrollArea className="mt-6">
+      <ScrollArea className="mt-6 z-0">
         <Table.Root>
           <Table.Header>
             <Table.Row>
