@@ -59,7 +59,7 @@ const Insactions = () => {
   
   if (isLoading) {
     return (
-      <div className="flex w-full flex-col items-center justify-center gap-4 text-center">
+      <div className="flex w-full flex flex-col items-center justify-center gap-4 text-center">
         <h2 className="w-full font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
           Insactions
         </h2>
@@ -71,10 +71,13 @@ const Insactions = () => {
   }
 
   return (
-    <div>
-      <h2 className="font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl flex justify-center">
+    <div className="flex w-full flex flex-col items-center justify-center gap-4 text-center">
+      <h2 className="w-full font-proto-mono text-3xl leading-[1.1] sm:text-3xl md:text-6xl">
         Insactions
       </h2>
+      <div className="max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7">
+        Unreflected IXs possible
+      </div>
       <div className="container w-full flex mt-9 gap-2 justify-center">
       <Button className="bg-white text-black" onClick={() => setPage(0)}>First</Button>
       <Button className="bg-white text-black" disabled={page <= 0} onClick={() => setPage(Math.max(0, page - 1))}>{'<'}</Button>
@@ -135,7 +138,6 @@ const Insactions = () => {
       <Button className="bg-white text-black" onClick={() => setPage(totalPages - 1)}>last</Button>
 
       </div>
-
       </div>
   );
 }
