@@ -51,8 +51,8 @@ export async function GET(req: NextRequest, res: NextResponse) {
   .select('', { count: 'exact' })
 
   .filter('status', 'eq', 20)
-  .filter('p', 'eq', 'krc-20')
-  .filter('tick', 'eq', 'kro');
+  .filter('p', 'eq', 'brc-20')
+  .filter('tick', 'eq', 'ista');
 
 if (countError) {
   return NextResponse.json({
@@ -66,8 +66,8 @@ if (countError) {
     .from('insactions-v0.0.1')
     .select('*')
     .eq('network', 'kroma')
-    .eq('p', 'krc-20')
-    .eq('tick', 'kro')
+    .eq('p', 'brc-20')
+    .eq('tick', 'ista')
     .filter('status', 'eq', 20)
     .range(page * pageSize, (page + 1) * pageSize - 1)
     .order('blockNumber', { ascending: false })

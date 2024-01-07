@@ -16,7 +16,7 @@ import { Box, Section, Container, Text, ScrollArea, Button, Flex, Dialog, TextFi
 import { SvgImages } from "@/components/svgImages"
 import { Progress } from "@/components/ui/progress"
 
-const InscribeKuro = ({ progressRatio, totalMintAmt, maxSupply }) => {
+const InscribeIsta = ({ progressRatio, totalMintAmt, maxSupply }) => {
   const { data, error, isLoading, isError, sendTransaction } = useSendTransaction();
   const { isLoading: isPending, isSuccess } = useWaitForTransaction({ hash: data?.hash });
   const chainId = useChainId();
@@ -43,7 +43,7 @@ const InscribeKuro = ({ progressRatio, totalMintAmt, maxSupply }) => {
   }, []);
 
   const [mintAmount, setMintAmount] = useState(0);
-  const [fixedScribeInput, setFixedScribeInput] = useState(`data:,{"p":"krc-20","op":"mint","tick":"kro","amt":"${mintAmount}"}`);
+  const [fixedScribeInput, setFixedScribeInput] = useState(`data:,{"p":"brc-20","op":"mint","tick":"ista","amt":"${mintAmount}"}`);
 
   useEffect(() => {
     const value = Number(mintAmount);
@@ -53,7 +53,7 @@ const InscribeKuro = ({ progressRatio, totalMintAmt, maxSupply }) => {
   }, [mintAmount]);
 
   useEffect(() => {
-    setFixedScribeInput(`data:,{"p":"krc-20","op":"mint","tick":"kro","amt":"${mintAmount}"}`);
+    setFixedScribeInput(`data:,{"p":"brc-20","op":"mint","tick":"ista","amt":"${mintAmount}"}`);
   }, [mintAmount]);
 
   const onScribe = useCallback(async () => {
@@ -91,7 +91,7 @@ const InscribeKuro = ({ progressRatio, totalMintAmt, maxSupply }) => {
       <Section>
       <div className="container flex flex-col items-center gap-4 w-full">
         <div className="rounded-2xl bg-muted mt-24 flex px-4 py-1.5 text-lg font-medium">
-            FREE MINT <div style={{ color: '#45D620' }}>&nbsp;$KRO</div>
+            MINT <div style={{ color: '#45D620' }}>&nbsp;$ISTA</div>
         </div>
 
           <SvgImages.kuroCat/>
@@ -102,7 +102,7 @@ const InscribeKuro = ({ progressRatio, totalMintAmt, maxSupply }) => {
         <Progress value={progressRatio} style={{zIndex:"-1"}}/>
         <p className="w-full text-right sm:text-sm lg:text-sm">
           <span style={{ color: '#45d620' }}>{totalMintAmt}</span> of 
-          <span>{isMobile ? ' 21B MINTED' : ' '+maxSupply+' KRO minted.'}</span> 
+          <span>{isMobile ? ' 21M MINTED' : ' '+maxSupply+' ISTA minted.'}</span> 
         </p>
         </div>
       <div>
@@ -127,7 +127,7 @@ const InscribeKuro = ({ progressRatio, totalMintAmt, maxSupply }) => {
 
         <Dialog.Content style={{ maxWidth: 450 }}>
           <Dialog.Title
-            style={{textAlign:"center"}}>MINT $KRO</Dialog.Title>
+            style={{textAlign:"center"}}>MINT $ISTA</Dialog.Title>
           <Dialog.Description size="2" mb="4"
             style={{textAlign:"center"}}>
             GET FIRST INSCRIPTION ON KROMA
@@ -201,4 +201,4 @@ const InscribeKuro = ({ progressRatio, totalMintAmt, maxSupply }) => {
   );
 };
 
-export { InscribeKuro };
+export { InscribeIsta };

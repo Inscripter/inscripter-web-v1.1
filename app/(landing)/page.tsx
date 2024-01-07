@@ -11,7 +11,7 @@ import { siteConfig } from "@/config/site"
 import { Progress } from "@/components/ui/progress"
 import { SvgImages } from "@/components/svgImages"
 import { Underline } from "lucide-react"
-import { InscribeKuro } from "@/components/inscribeKuro"
+import { InscribeIsta } from "@/components/inscribeIsta"
 import { Insactions } from "@/components/insactions"
 
 async function getTotalMintAmt() {
@@ -29,7 +29,7 @@ async function getTotalMintAmt() {
 
 export default function IndexPage() {
   const [totalMintAmt, setTotalMintAmt] = React.useState(0);
-  let maxSupply = 21000000000;
+  let maxSupply = 21000000;
   const progressRatio = totalMintAmt / maxSupply * 100;
 
   React.useEffect(() => {
@@ -39,7 +39,7 @@ export default function IndexPage() {
   return (
     <>
       <section id="landing">
-        <InscribeKuro progressRatio={progressRatio} maxSupply={maxSupply} totalMintAmt={totalMintAmt}/>
+        <InscribeIsta progressRatio={progressRatio} maxSupply={maxSupply} totalMintAmt={totalMintAmt}/>
       </section>
       <section id="insactions" className="container py-8 md:py-12 lg:py-24 h-full">
         <Insactions/>

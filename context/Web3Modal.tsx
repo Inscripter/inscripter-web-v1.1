@@ -18,7 +18,7 @@ const metadata = {
 }
 
 const chains = evmChains
-const wagmiConfig = defaultConfig({ chains, projectId, metadata })
+const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata })
 
 // 3. Create modal
 

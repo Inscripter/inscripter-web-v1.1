@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { landingConfig } from "@/config/landing"
 import { useAccount } from 'wagmi';
-const { address, isConnected } = useAccount()
+
 import { buttonVariants } from "@/components/ui/button"
 import { ConnectButton } from "@/components/ui/wallet-connect-btn" 
 import { MainNav } from "@/components/main-nav"
@@ -59,7 +59,7 @@ export default function LandingLayout({
               <div className="text-monkeyGreen ml-2 mr-2">
                 {new Intl.NumberFormat().format(balance)}
               </div>
-              KRO
+              ISTA
               <div className="ml-2">
                 <SvgImages.kroCoinIcon/>
               </div>

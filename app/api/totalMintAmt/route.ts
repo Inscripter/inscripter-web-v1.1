@@ -9,8 +9,8 @@ export async function GET(req: NextRequest) {
   .from('balance')
   .select('totalMintAmt')
   .eq('network', 'kroma')
-  .eq('p', 'krc-20')
-  .eq('tick', 'kro')
+  .eq('p', 'brc-20')
+  .eq('tick', 'ista')
   .order('blockNumber', { ascending: false })
   .order('txNumber', { ascending: false })
   .limit(1);

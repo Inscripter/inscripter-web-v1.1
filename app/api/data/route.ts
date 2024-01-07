@@ -49,8 +49,8 @@ export async function GET(req: NextRequest, res: NextResponse) {
   const { count: totalRows, error: countError } = await supabase
     .from('insactions-v0.0.1')
     .select('', { count: 'exact' })
-    .eq('p', 'krc-20')
-    .eq('tick', 'kro')
+    .eq('p', 'brc-20')
+    .eq('tick', 'ista')
     .filter('status', 'eq', 20);
 
   if (countError) {
@@ -63,8 +63,8 @@ export async function GET(req: NextRequest, res: NextResponse) {
   const { data, error } = await supabase
     .from('insactions-v0.0.1')
     .select('*')
-    .eq('p', 'krc-20')
-    .eq('tick', 'kro')
+    .eq('p', 'brc-20')
+    .eq('tick', 'ista')
     .filter('status', 'eq', 20)
     .range(page * pageSize, (page + 1) * pageSize - 1)
     .order('blockNumber', { ascending: false })
