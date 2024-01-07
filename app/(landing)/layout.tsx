@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { landingConfig } from "@/config/landing"
 import { useAccount } from 'wagmi';
-
+const { address, isConnected } = useAccount()
 import { buttonVariants } from "@/components/ui/button"
 import { ConnectButton } from "@/components/ui/wallet-connect-btn" 
 import { MainNav } from "@/components/main-nav"
