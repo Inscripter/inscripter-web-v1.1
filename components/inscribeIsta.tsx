@@ -4,6 +4,7 @@ import { env } from "@/env.mjs"
 import { siteConfig } from "@/config/site"
 import { is } from "date-fns/locale";
 
+
 import React, { ChangeEvent, use, useCallback, useEffect, useState } from 'react';
 import {
   useSendTransaction,
@@ -15,6 +16,7 @@ import {
 import { Box, Section, Container, Text, ScrollArea, Button, Flex, Dialog, TextField} from "@radix-ui/themes"
 import { SvgImages } from "@/components/svgImages"
 import { Progress } from "@/components/ui/progress"
+import TextAnimation from '@/components/textAnimation'; 
 
 const InscribeIsta = ({ progressRatio, totalMintAmt, maxSupply }) => {
   const { data, error, isLoading, isError, sendTransaction } = useSendTransaction();
@@ -91,14 +93,15 @@ const InscribeIsta = ({ progressRatio, totalMintAmt, maxSupply }) => {
       <Section>
       <div className="container flex flex-col items-center gap-4 w-full">
         <div className="rounded-2xl bg-muted mt-24 flex px-4 py-1.5 text-lg font-medium">
-            MINT <div style={{ color: '#45D620' }}>&nbsp;$ISTA</div>
+        GET<a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>&nbsp;$ISTA</a>
         </div>
 
           <SvgImages.kuroCat/>
 
-        {/* Removed comment for brevity */}
-        <h1 className="text-scale-down text-center font-proto-mono text-xl lg:text-6xl">GET FIRST INSCRIPTION</h1>
-        <p className="text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground text-2xl sm:leading-8">on <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>Kroma</a></p>
+
+
+        <h1 className="text-scale-down text-center font-proto-mono text-xl lg:text-6xl">FOR FAIR DATA ACCESS</h1>
+        <p className="text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground text-2xl sm:leading-8">ON <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>INSCRIPTION</a></p>
         <Progress value={progressRatio} style={{zIndex:"-1"}}/>
         <p className="w-full text-right sm:text-sm lg:text-sm">
           <span style={{ color: '#45d620' }}>{totalMintAmt}</span> of 
