@@ -117,9 +117,12 @@ const InscribeIsta = ({ progressRatio, totalMintAmt, maxSupply }) => {
             <Button
                   type="button"
                   size="4"
+                  aria-disabled={true}
+                  disabled={true}
                   style={{
                     marginTop: '24px',
-                    backgroundColor: 'white',
+                    // backgroundColor: 'white',
+                    backgroundColor: 'grey',
                     color: 'black',
                     border: '1px solid var(--color-input)',
                     cursor: 'pointer',
