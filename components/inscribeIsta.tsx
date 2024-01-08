@@ -93,15 +93,16 @@ const InscribeIsta = ({ progressRatio, totalMintAmt, maxSupply }) => {
       <Section>
       <div className="container flex flex-col items-center gap-4 w-full">
         <div className="rounded-2xl bg-muted mt-24 flex px-4 py-1.5 text-lg font-medium">
-        GET<a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>&nbsp;$ISTA</a>
+        {/* GET<a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>&nbsp;$ISTA</a> */}
+        GET FAST ACCESS
         </div>
 
           <SvgImages.kuroCat/>
 
 
 
-        <h1 className="text-scale-down text-center font-proto-mono text-xl lg:text-6xl">FOR FAST DATA ACCESS</h1>
-        <p className="text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground text-2xl sm:leading-8">OF <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>INSCRIPTION</a></p>
+        <h1 className="text-scale-down text-center font-proto-mono text-3xl nowrap lg:text-6xl">TO INSCRIPTION DATA</h1>
+        <p className="text-scale-down text-center max-w-[42rem] leading-normal text-muted-foreground text-2xl sm:leading-8">WITH <a href="https://kromascan.com/tx/0xfe672b2bbd9343d000448437fce16a3c21152d07d24a5ec33136ac202bbe2ad8" target="_blank" rel="noopener noreferrer" style={{ color: '#45D620' }}>$ISTA</a></p>
         <Progress value={progressRatio} style={{zIndex:"-1"}}/>
         <p className="w-full text-right sm:text-sm lg:text-sm">
           <span style={{ color: '#45d620' }}>{totalMintAmt}</span> of 
