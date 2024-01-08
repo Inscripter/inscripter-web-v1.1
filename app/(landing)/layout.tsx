@@ -26,13 +26,13 @@ export default function LandingLayout({
   useEffect(() => { 
     setIsMobile(window.innerWidth <= 640);
     setHasMounted(true);
-    if ( address && isConnected) {
-      const res = fetch(`/api/getKroBalance?walletAddress=${address}`)
+    if ( address && hasMounted && isConnected) {
+      const res = fetch(`/api/getIstaBalance?walletAddress=${address}`)
         .then(res => res.json())
         .then(data => setBalance(data.balance))
         .catch(console.error);
     }
-  }, [address, isConnected]);
+  }, [address, hasMounted, isConnected]);
 
   if (!hasMounted) {
     return null;
@@ -47,8 +47,8 @@ export default function LandingLayout({
         </div>
       </header>
       <div className={
-        isMobile? "scale-[0.9] fixed right-0 flex-col sm:h-20 lg:h-12 items-end justify-end py-4 mr-2 z-50" :
-                  "scale-[1] fixed right-0 flex-col sm:h-20 lg:h-12 items-end justify-end py-2 mr-4 z-50"}>
+        isMobile? "scale-[0.9] fixed right-0 flex-col sm:h-20 lg:h-12 items-end justify-end py-4 mr-2 z-50 font-proto-mono" :
+                  "scale-[1] fixed right-0 flex-col sm:h-20 lg:h-12 items-end justify-end py-2 mr-4 z-50 font-proto-mono"}>
         <ConnectButton/>
         {isMobile? "" : <div className="w-3"></div>}
         <div className="flex justify-end mr-4 font-proto-mono">
